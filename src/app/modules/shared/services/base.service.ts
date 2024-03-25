@@ -1,7 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
-import * as dayjs from 'dayjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -22,8 +21,6 @@ export class BaseService {
           request[prop].forEach((element: any) => {
             queryParams = queryParams.append(prop, element);
           });
-        } else if (request[prop] && typeof request[prop] === 'object') {
-          queryParams = queryParams.append(prop, dayjs(request[prop]).format('YYYY-MM-DD'));
         } else if (request[prop] != undefined) {
           queryParams = queryParams.append(prop, request[prop]);
         }

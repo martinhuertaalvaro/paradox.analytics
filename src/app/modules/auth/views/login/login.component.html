@@ -1,0 +1,30 @@
+<div class="c-login">
+  <div class="c-login__tutorial">
+    @if(!showForm) {
+    <div class="c-login__tutorial__image">
+      <img class="m-somoshiberus" />
+    </div>
+    <div class="button_div_entry">
+      <div class="button_div_entry_son">
+        <button
+          size="medium"
+          shape="round"
+          fill="outline"
+          (click)="onShowForm()"
+        >
+          <span>Entry</span>
+        </button>
+      </div>
+    </div>
+    }@else {
+    <div class="centered-container">
+      <div class="loginForm">
+        <div class="loginForm__pruebaForm">
+          <img [ngStyle]="{ width: '300px' }" class="m-somoshiberus" />
+          <app-form-login></app-form-login>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

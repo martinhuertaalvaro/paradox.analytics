@@ -14,4 +14,5 @@ export const environment = {
   defaultTenant: (window as Window & typeof globalThis & { env: WindowEnv })[
     'env'
   ].TENANT_CODE,
+  isMobile: undefined as boolean | undefined,
 };
