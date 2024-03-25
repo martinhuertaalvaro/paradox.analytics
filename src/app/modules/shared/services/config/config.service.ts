@@ -3,7 +3,7 @@ import { Component, Inject, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',

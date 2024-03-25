@@ -1,0 +1,66 @@
+$heightBottom: 170px;
+
+$heightBottom: 170px;
+
+.c-login {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: var(--PARADOX-background);
+
+  &__tutorial {
+    height: 100vh;
+
+    &__image {
+      display: flex;
+      position: relative;
+      width: 100%;
+      height: calc(100% - #{$heightBottom});
+
+      img {
+        margin: 20px auto 0;
+
+        &.m-somoshiberus {
+          width: 45%;
+          margin-top: 90px;
+        }
+      }
+    }
+  }
+}
+
+.m-somoshiberus {
+  content: var(--PARADOX-auth);
+}
+
+// button div
+
+.button_div_entry {
+  text-align: center;
+}
+
+// For login form block
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loginForm {
+  text-align: center;
+  position: relative;
+  width: 35%;
+  min-width: 200px;
+  max-width: 400px;
+  border-radius: 10px;
+
+  &__pruebaForm {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+}

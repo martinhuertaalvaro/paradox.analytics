@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormLoginComponent } from '../../components/form-login/form-login.component';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  imports: [CommonModule, FormLoginComponent],
+  templateUrl: './auth.component.html',
+  styleUrl: './auth.component.scss',
 })
-export class LoginComponent {
+export class AuthComponent {
   constructor() {}
   public showForm: boolean = false;
 

@@ -1,1 +1,46 @@
-<p>form-login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="!tenantExist" class="inputForm">
+    <input
+      label="Cliente"
+      placeholder="Cliente"
+      formControlName="tenantId"
+      type="text"
+    ></input>
+  </div>
+  <div *ngIf="tenantExist">
+    <div class="inputForm">
+      <input
+        placeholder="Username"
+        formControlName="username"
+      ></input>
+    </div>
+    <div class="inputForm second">
+      <input
+        label="Password"
+        placeholder="Password"
+        formControlName="password"
+        type="password"
+      ></input>
+    </div>
+  </div>
+  @if(tenantExist) {
+  <button
+    class="accesButtonForm"
+    size="small"
+    shape="round"
+    type="submit"
+    fill="outline"
+    >Sign In</button
+  >
+  }@else {
+  <button
+    class="accesButtonForm"
+    size="small"
+    shape="round"
+    type="submit"
+    fill="outline"
+  >
+    Acces
+  </button>
+  }
+</form>
