@@ -1,2 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
-@import "theme/variables.scss";
+@import "theme/variablesEnergyStudent.scss";
+:root {
+  --paradox-color-step-50: #0d0d0d;
+  --paradox-color-step-100: #1a1a1a;
+  --paradox-color-step-150: #262626;
+  --paradox-color-step-200: #333333;
+  --paradox-color-step-250: #404040;
+  --paradox-color-step-300: #4d4d4d;
+  --paradox-color-step-350: #595959;
+  --paradox-color-step-400: #666666;
+  --paradox-color-step-450: #737373;
+  --paradox-color-step-500: #808080;
+  --paradox-color-step-550: #8c8c8c;
+  --paradox-color-step-600: #999999;
+  --paradox-color-step-650: #a6a6a6;
+  --paradox-color-step-700: #b3b3b3;
+  --paradox-color-step-750: #bfbfbf;
+  --paradox-color-step-800: #cccccc;
+  --paradox-color-step-850: #d9d9d9;
+  --paradox-color-step-900: #e6e6e6;
+  --paradox-color-step-950: #f2f2f2;
+  --background-main-color: var(--paradox-color-step-900);
+  --text-color: #495057;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #6c757d;
+  --primary-color: #01537b;
+  --info-color: #0285c7;
+  --info-color-background: #e0f5ff;
+  --warning-color: #db7900;
+  --danger-color: #c70d18;
+  --success-color: #449c09;
+  --font-family: Roboto, sans-serif;
+  --content-padding: 1.25rem;
+  --inline-spacing: 0.5rem;
+  --border-radius: 0px;
+  --focus-ring: 0 0 0 0.2rem #a5c1cf;
+  --maskbg: rgba(0, 0, 0, 0.4);
+  --button-actions-size: 16px;
+  --button-header-size: 20px;
+  --PARADOX-background: url("/assets/img/paradox/fondo.svg");
+  --PARADOX-menu: url("/assets/img/paradox/PARADOX-expanded.svg");
+  --PARADOX-menu-collapsed: url("/assets/img/paradox/PARADOX-shrinked.svg");
+  --PARADOX-auth: url("/assets/img/paradox/paradox.analytics.svg");
+  --background-light: #f8f9fa;
+  --background-menu: #014262;
+  --background-secondary: #ebedef;
+  --background-children-menu: #014262;
+  --background-parent-menu: #01537b;
+  --background-active-menu: #a5c1cf;
+  --text-active-menu: #ffffff;
+  --hover-color: #012b40;
+  --hover-border-color: #003854;
+  --hover-text-color: #01537b;
+  --hover-bg-color: #a5c1cf;
+  --loading-url: url("/assets/img/paradox/GIF_kvp_cargando.gif");
+  --scrollbar-bar-color: #a5c1cf;
+  --dialog-x-color: #ffffff;
+  --fondo-logo-menu: #014262;
+  --navbar-background-color: lightgray;
+  --sidebar-background-color: gray;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-main-color: var(--paradox-color-step-200);
+    --PARADOX-auth: url("/assets/img/paradox/paradox.analytics.dark.svg");
+    --navbar-background-color: #161a1e;
+    --sidebar-background-color: #191f26;
+  }
+}
+
+body {
+  background-color: var(--background-main-color);
+  color: var(--text-color);
+}
