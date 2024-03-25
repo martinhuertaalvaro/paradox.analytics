@@ -1,26 +1,26 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div *ngIf="!tenantExist" class="inputForm">
-    <input
-      label="Cliente"
-      placeholder="Cliente"
-      formControlName="tenantId"
-      type="text"
-    ></input>
+    <label for="client">client:</label>
+    <input type="text" id="client" name="client" formControlName="tenantId" />
   </div>
   <div *ngIf="tenantExist">
     <div class="inputForm">
+      <label for="username">username:</label>
       <input
-        placeholder="Username"
+        type="email"
+        id="username"
+        name="username"
         formControlName="username"
-      ></input>
+      />
     </div>
     <div class="inputForm second">
+      <label for="password">password:</label>
       <input
-        label="Password"
-        placeholder="Password"
-        formControlName="password"
         type="password"
-      ></input>
+        id="password"
+        name="password"
+        formControlName="password"
+      />
     </div>
   </div>
   @if(tenantExist) {
@@ -30,8 +30,9 @@
     shape="round"
     type="submit"
     fill="outline"
-    >Sign In</button
   >
+    Sign In
+  </button>
   }@else {
   <button
     class="accesButtonForm"
