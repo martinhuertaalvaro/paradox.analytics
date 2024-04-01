@@ -1,158 +1,44 @@
-<div style="height: 100vh">
-  <nz-layout style="height: 100%">
-    <nz-sider
-      nzTheme="light"
-      nzCollapsible
-      [(nzCollapsed)]="isCollapsed"
-      [nzTrigger]="null"
-      [nzCollapsedWidth]="60"
-    >
-      <div class="logo" *ngIf="!isCollapsed; else miniLogo"></div>
-      <ng-template #miniLogo>
-        <div class="mini-logo"></div>
-      </ng-template>
-      <ul nz-menu nzMode="inline">
-        <li nz-menu-item [routerLink]="['home']">
-          <a [routerLink]="['home']">
-            <i nz-icon nzType="home" nzTheme="outline"></i>
-            <span>Menú</span>
-          </a>
-        </li>
-        <li nz-menu-item [routerLink]="['imputar-partes']">
-          <a [routerLink]="['imputar-partes']">
-            <i nz-icon nzType="carry-out" nzTheme="outline"></i>
-            <span>Imputar Partes</span>
-          </a>
-        </li>
-        <li nz-submenu nzTitle="Gestión" nzIcon="solution">
-          <ul>
-            <li nz-menu-item [routerLink]="['gestion', 'timesheets']">
-              <a [routerLink]="['gestion', 'timesheets']">Timesheets</a>
-            </li>
-            <li nz-menu-item [routerLink]="['gestion', 'fechas-cierre']">
-              <a [routerLink]="['gestion', 'fechas-cierre']">Fechas Cierre</a>
-            </li>
-            <li nz-menu-item [routerLink]="['gestion', 'revision-imputacion']">
-              <a [routerLink]="['gestion', 'revision-imputacion']"
-                >Revisión de Imputación</a
-              >
-            </li>
-          </ul>
-        </li>
-        <li nz-submenu nzTitle="Calendario" nzIcon="calendar">
-          <ul>
-            <li nz-menu-item [routerLink]="['calendario', 'festivos']">
-              <a [routerLink]="['calendario', 'festivos']">Festivos</a>
-            </li>
-            <li nz-menu-item>
-              <a [routerLink]="['calendario', 'calendarios']">Calendarios</a>
-            </li>
-          </ul>
-        </li>
-        <li nz-submenu nzTitle="Maestros" nzIcon="bars">
-          <ul>
-            <li nz-menu-item [routerLink]="['maestros', 'proyectos']">
-              <a [routerLink]="['maestros', 'proyectos']">Proyectos</a>
-            </li>
-            <li nz-menu-item [routerLink]="['maestros', 'empleados']">
-              <a [routerLink]="['maestros', 'empleados']">Empleados</a>
-            </li>
-          </ul>
-        </li>
-        <li nz-submenu nzTitle="Informes" nzIcon="file-search">
-          <ul>
-            <li nz-menu-item [routerLink]="['informes', 'informe-control']">
-              <a [routerLink]="['informes', 'informe-control']"
-                >Informes Control</a
-              >
-            </li>
-            <li
-              nz-menu-item
-              [routerLink]="['informes', 'informe-responsables']"
-            >
-              <a [routerLink]="['informes', 'informe-responsables']"
-                >Informe Responsable</a
-              >
-            </li>
-            <li
-              nz-menu-item
-              [routerLink]="['informes', 'extracciones-manuales']"
-            >
-              <a [routerLink]="['informes', 'extracciones-manuales']"
-                >Extracciones Manuales</a
-              >
-            </li>
-          </ul>
-        </li>
-        <li nz-submenu nzTitle="Cargas Externas" nzIcon="upload">
-          <ul>
-            <li nz-menu-item [routerLink]="['cargas-externas', 'carga-horas']">
-              <a [routerLink]="['cargas-externas', 'carga-horas']"
-                >Carga Horas</a
-              >
-            </li>
-            <li
-              nz-menu-item
-              [routerLink]="['cargas-externas', 'carga-usuarios']"
-            >
-              <a [routerLink]="['cargas-externas', 'carga-usuarios']"
-                >Carga Usuarios</a
-              >
-            </li>
-          </ul>
-        </li>
-        <li nz-submenu nzTitle="Procesos" nzIcon="setting">
-          <ul>
-            <li nz-menu-item [routerLink]="['procesos', 'tareas']">
-              <a [routerLink]="['procesos', 'tareas']">Tareas</a>
-            </li>
-          </ul>
-        </li>
-        <li nz-submenu nzTitle="Configuración" nzIcon="tool">
-          <ul>
-            <li nz-menu-item [routerLink]="['config', 'parametros']">
-              <a [routerLink]="['config', 'parametros']">Avisos</a>
-            </li>
-            <li nz-menu-item [routerLink]="['config', 'log-importacion']">
-              <a [routerLink]="['config', 'log-importacion']"
-                >Log Importación</a
-              >
-            </li>
-            <li nz-menu-item [routerLink]="['config', 'ubicaciones']">
-              <a [routerLink]="['config', 'ubicaciones']">Ubicaciones</a>
-            </li>
-          </ul>
-        </li>
-        <!-- <li nz-menu-item (click)="logOut()">
-          <i nz-icon nzType="logout" nzTheme="outline"></i>
-          <span>Cerrar Sesión</span>
-        </li> -->
-      </ul>
-    </nz-sider>
-
-    <nz-layout>
-      <nz-header>
-        <div class="divNombre">
-          <i nz-icon nzType="logout" nzTheme="outline" class="iconNombre"></i>
-        </div>
-        <nz-breadcrumb
-          [nzAutoGenerate]="true"
-          [nzRouteLabel]="'customBreadcrumb'"
-          style="width: 100%"
-        ></nz-breadcrumb>
-        <i
-          class="trigger"
-          nz-icon
-          [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-          (click)="isCollapsed = !isCollapsed"
-        ></i>
-      </nz-header>
-
-      <nz-content>
-        <div class="inner-content">
-          <router-outlet></router-outlet>
-        </div>
-      </nz-content>
-    </nz-layout>
+<nz-layout id="core-layout">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-submenu nzTitle="User" nzIcon="user">
+        <ul>
+          <li nz-menu-item>Tom</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Team" nzIcon="team">
+        <ul>
+          <li nz-menu-item>Team 1</li>
+          <li nz-menu-item>Team 2</li>
+        </ul>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="file"></span>
+        <span>File</span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header style="display: flex">
+      <span
+        class="trigger"
+        nz-icon
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed"
+        >A</span
+      >
+      <nz-breadcrumb>
+        <nz-breadcrumb-item>User</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+      </nz-breadcrumb>
+    </nz-header>
+    <br />
+    <nz-content>
+      <div class="inner-content">Bill is a cat.</div>
+    </nz-content>
+    <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
   </nz-layout>
-</div>
+</nz-layout>
