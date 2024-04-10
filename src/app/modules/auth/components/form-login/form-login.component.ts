@@ -74,7 +74,7 @@ export class FormLoginComponent {
           this.authSvc.verify(request).subscribe((res: any) => {
             if (res === true) {
               this.authSvc.saveToLocalStorageToken(token);
-              this.router.navigate(['/layout']);
+              this.router.navigate(['/core']);
             } else {
               /* this.toastSvc.create(
                 'Invalid Credentials',
@@ -85,7 +85,7 @@ export class FormLoginComponent {
           });
         },
         error: (err: any) => {
-          /* this.toastSvc.create(err.error.code, err.error.message, 'danger'); */
+          console.log(err);
         },
       });
     }

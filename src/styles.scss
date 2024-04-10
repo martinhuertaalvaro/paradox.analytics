@@ -23,7 +23,7 @@
   --paradox-color-step-900: #e6e6e6;
   --paradox-color-step-950: #f2f2f2;
   --background-main-color: var(--paradox-color-step-900);
-  --text-color: #495057;
+  --text-color: var(--paradox-color-step-900);
   --primary-text-color: #ffffff;
   --secondary-text-color: #6c757d;
   --primary-color: #01537b;
@@ -43,7 +43,8 @@
   --PARADOX-background: url("/assets/img/paradox/fondo.svg");
   --PARADOX-menu: url("/assets/img/paradox/PARADOX-expanded.svg");
   --PARADOX-menu-collapsed: url("/assets/img/paradox/PARADOX-shrinked.svg");
-  --PARADOX-auth: url("/assets/img/paradox/paradox.analytics.svg");
+  --PARADOX-logo: url("/assets/img/paradox/paradox.analytics.svg");
+  --PARADOX-logo-white: url("/assets/img/paradox/paradox.analytics.dark.svg");
   --background-light: #f8f9fa;
   --background-menu: #014262;
   --background-secondary: #ebedef;
@@ -55,24 +56,23 @@
   --hover-border-color: #003854;
   --hover-text-color: #01537b;
   --hover-bg-color: #a5c1cf;
-  --loading-url: url("/assets/img/paradox/GIF_kvp_cargando.gif");
   --scrollbar-bar-color: #a5c1cf;
   --dialog-x-color: #ffffff;
   --fondo-logo-menu: #014262;
   --navbar-background-color: lightgray;
   --sidebar-background-color: gray;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-main-color: var(--paradox-color-step-200);
-    --PARADOX-auth: url("/assets/img/paradox/paradox.analytics.dark.svg");
-    --navbar-background-color: #161a1e;
-    --sidebar-background-color: #191f26;
-  }
+  --border-radius: 10px;
 }
 
 body {
   background-color: var(--background-main-color);
   color: var(--text-color);
+}
+
+input {
+  border-radius: var(--border-radius);
+}
+
+button {
+  border-radius: var(--border-radius);
 }

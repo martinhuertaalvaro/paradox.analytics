@@ -13,7 +13,7 @@ import { BaseService } from '../../shared/services/base.service';
   providedIn: 'root',
 })
 export class AuthService extends BaseService {
-  public static LOCAL_STORAGE_KEY_TOKEN = 'TOKEN';
+  public static LOCAL_STORAGE_KEY_TOKEN = 'access_token';
   _router = inject(Router);
 
   getAccessToken(): ILoginResponse | null {

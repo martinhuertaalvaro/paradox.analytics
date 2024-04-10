@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './loading.component.html',
-  styleUrl: './loading.component.scss',
+  styleUrl: './loading.component.css',
 })
 export class LoadingComponent {
   private loadingSvc = inject(LoadingService);

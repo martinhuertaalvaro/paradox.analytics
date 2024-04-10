@@ -1,47 +1,51 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div *ngIf="!tenantExist" class="inputForm">
-    <label for="client">client:</label>
-    <input type="text" id="client" name="client" formControlName="tenantId" />
+  <div *ngIf="!tenantExist" style="align-items: center" class="inputForm">
+    <input
+      type="text"
+      id="client"
+      name="client"
+      formControlName="tenantId"
+      placeholder="Client"
+      style="height: min-content"
+    />
+    <button
+      style="margin-left: 5px"
+      size="small"
+      shape="round"
+      type="submit"
+      fill="outline"
+    >
+      >
+    </button>
   </div>
   <div *ngIf="tenantExist">
     <div class="inputForm">
-      <label for="username">username:</label>
       <input
         type="email"
         id="username"
         name="username"
         formControlName="username"
+        placeholder="Username"
       />
     </div>
     <div class="inputForm second">
-      <label for="password">password:</label>
       <input
         type="password"
         id="password"
         name="password"
         formControlName="password"
+        placeholder="Password"
+        style="height: min-content"
       />
+      <button
+        style="margin-left: 5px"
+        size="small"
+        shape="round"
+        type="submit"
+        fill="outline"
+      >
+        >>
+      </button>
     </div>
   </div>
-  @if(tenantExist) {
-  <button
-    class="accesButtonForm"
-    size="small"
-    shape="round"
-    type="submit"
-    fill="outline"
-  >
-    Sign In
-  </button>
-  }@else {
-  <button
-    class="accesButtonForm"
-    size="small"
-    shape="round"
-    type="submit"
-    fill="outline"
-  >
-    Acces
-  </button>
-  }
 </form>
