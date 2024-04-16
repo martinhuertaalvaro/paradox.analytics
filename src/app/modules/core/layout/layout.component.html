@@ -4,10 +4,28 @@
       <div class="logo"></div>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item [routerLink]="['main']">
+        <a style="display: flex; align-items: center">
+          <i nz-icon nzType="home" nzTheme="outline"></i>
+          <span>Home</span>
+        </a>
+      </li>
+      <li nz-menu-item [routerLink]="['analytics']">
+        <a style="display: flex; align-items: center">
+          <i nz-icon nzType="dashboard" nzTheme="outline"></i>
+          <span>Analytics</span>
+        </a>
+      </li>
+      <li nz-submenu nzTitle="Devices" nzIcon="mobile">
+        <ul>
+          <li nz-menu-item [routerLink]="['devices']">Device 1</li>
+          <li nz-menu-item [routerLink]="['devices']">Device 2</li>
+        </ul>
+      </li>
       <li nz-submenu nzTitle="User" nzIcon="user">
         <ul>
-          <li nz-menu-item routerLink="user/profile">Profile</li>
-          <li nz-menu-item routerLink="user/settings">Settings</li>
+          <li nz-menu-item [routerLink]="['user', 'profile']">Profile</li>
+          <li nz-menu-item [routerLink]="['user', 'settings']">Settings</li>
         </ul>
       </li>
       <li nz-submenu nzTitle="Team" nzIcon="team">
@@ -15,10 +33,6 @@
           <li nz-menu-item>Team 1</li>
           <li nz-menu-item>Team 2</li>
         </ul>
-      </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="file"></span>
-        <span>File</span>
       </li>
     </ul>
   </nz-sider>
@@ -30,10 +44,11 @@
         [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
         (click)="isCollapsed = !isCollapsed"
       ></span>
-      <nz-breadcrumb>
-        <nz-breadcrumb-item>User</nz-breadcrumb-item>
-        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
-      </nz-breadcrumb>
+      <nz-breadcrumb
+        [nzAutoGenerate]="true"
+        [nzRouteLabel]="'customBreadcrumb'"
+        style="width: 100%"
+      ></nz-breadcrumb>
     </nz-header>
     <br />
     <nz-content>
