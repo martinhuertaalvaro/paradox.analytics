@@ -26,8 +26,13 @@
 }
 
 nz-header {
-  background: #fff;
+  background: var(--navbar-background-color);
   padding: 0;
+}
+
+nz-sider,
+.nz-menu {
+  background: var(--sidebar-background-color);
 }
 
 nz-content {
@@ -40,7 +45,7 @@ nz-breadcrumb {
 
 .inner-content {
   padding: 24px;
-  background: #fff;
+  background-color: var(--background-main-color);
   height: 100%;
   width: 100%;
   border-radius: var(--border-radius);
