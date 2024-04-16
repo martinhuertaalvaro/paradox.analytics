@@ -23,8 +23,6 @@
 .logo {
   align-self: center;
   justify-self: center;
-  width: 70%;
-  content: var(--PARADOX-logo-white);
 }
 
 nz-header {

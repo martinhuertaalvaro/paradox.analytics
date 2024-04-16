@@ -1,7 +1,15 @@
 <nz-layout id="core-layout">
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logoContainer">
-      <div class="logo"></div>
+      <div
+        class="logo"
+        [ngStyle]="{
+          content: isCollapsed
+            ? 'var(--PARADOX-logo-collapsed)'
+            : 'var(--PARADOX-logo-white)',
+          width: isCollapsed ? '200%' : '80%'
+        }"
+      ></div>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item [routerLink]="['main']">

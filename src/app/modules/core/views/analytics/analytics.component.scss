@@ -1,0 +1,31 @@
+.mainContainer {
+  height: 100%;
+}
+
+.analyticsContainer {
+  height: 30%;
+}
+
+.devicesContainer {
+  height: 70%;
+}
+
+.stats {
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* offsetX, offsetY, blurRadius, color */
+  margin: 0.5%;
+  overflow: hidden;
+}
+
+.stats.big {
+  width: 49%;
+}
+
+.stats.small {
+  width: 32.33%;
+}
+
+#canvas {
+  max-width: 200px !important;
+  max-height: 200px !important;
+}
