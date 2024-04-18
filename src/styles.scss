@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "ng-zorro-antd/ng-zorro-antd.variable.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 @import "theme/variablesEnergyStudent.scss";
 :root {
@@ -60,14 +61,15 @@
   --scrollbar-bar-color: #a5c1cf;
   --dialog-x-color: #ffffff;
   --fondo-logo-menu: #014262;
-  --navbar-background-color: var(--paradox-color-step-800);
-  --sidebar-background-color: gray;
+  --navbar-background-color: var(--paradox-color-step-900);
+  --sidebar-background-color: var(--paradox-color-step-100);
   --border-radius: 10px;
 }
 
 body {
   background-color: var(--background-main-color);
   color: var(--text-color);
+  font-family: "Poppins", sans-serif;
 }
 
 input {
