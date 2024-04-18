@@ -27,7 +27,11 @@ export class ConfigService {
     console.log(this.tenant);
     if (this.tenant !== '') {
       this.titleSvc.setTitle(this.tenant.toUpperCase());
-      this.favicon = `assets/img/${this.tenant.toLowerCase()}/favicon.ico`;
+
+      this.favicon =
+        this.tenant.toLowerCase() !== 'paradox'
+          ? `assets/img/${this.tenant.toLowerCase()}/favicon.ico`
+          : `assets/img/${this.tenant.toLowerCase()}/${this.tenant.toLowerCase()}.analytics.collapse.svg`;
       const linkElement = this.document.querySelector(
         "link[rel~='icon']"
       ) as HTMLLinkElement;

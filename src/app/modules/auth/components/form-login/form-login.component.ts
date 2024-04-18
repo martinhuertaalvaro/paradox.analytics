@@ -31,7 +31,6 @@ export class FormLoginComponent {
   private configSvc = inject(ConfigService);
   protected loginForm!: FormGroup;
   public tenantExist: any = false;
-  protected tenant_id: any = null;
 
   loadForm() {
     this.loginForm = this.formBuilder.group({
@@ -57,8 +56,8 @@ export class FormLoginComponent {
         res !== null
           ? (this.configSvc.globalConfig(true, res.code),
             (this.tenantExist = true),
-            (this.tenant_id = res.id))
-          : ((this.tenantExist = null), (this.tenant_id = null)) /* ,
+            localStorage.setItem('tenantId', res.id.toString()))
+          : ((this.tenantExist = null), this.authSvc.deleteTenantId()) /* ,
             this.toastSvc.create(
               'Invalid Credentials',
               'Tenant not found',
@@ -67,7 +66,7 @@ export class FormLoginComponent {
       });
     } else if (this.tenantExist) {
       let request: ILoginRequest = this.loginForm.value as ILoginRequest;
-      request.tenantId = this.tenant_id;
+      request.tenantId = this.authSvc.getTenantId();
       this.authSvc.login(request).subscribe({
         next: (res: any) => {
           const token = res;
