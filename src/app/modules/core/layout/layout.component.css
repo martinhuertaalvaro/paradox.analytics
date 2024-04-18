@@ -13,7 +13,7 @@
 }
 
 .trigger:hover {
-  color: #1890ff;
+  color: var(--sidebar-item-hover-color);
 }
 
 .logoContainer {
@@ -44,6 +44,8 @@ nz-content {
 
 nz-breadcrumb {
   margin: 16px 0;
+  font-size: large;
+  font-weight: bold;
 }
 
 .inner-content {
@@ -60,6 +62,9 @@ nz-footer {
 }
 
 .navbarItem {
-  font-weight: 500;
   font-size: medium;
+}
+
+.nz-menu {
+  height: 100%;
 }

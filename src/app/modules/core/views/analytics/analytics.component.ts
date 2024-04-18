@@ -1,35 +1,49 @@
 import { Component } from '@angular/core';
 import { ZorroNgModule } from '../../../ng-zorro/zorro-ng.module';
-import Chart from 'chart.js/auto';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-analytics',
   standalone: true,
-  imports: [ZorroNgModule],
+  imports: [ZorroNgModule, NgxChartsModule],
   templateUrl: './analytics.component.html',
   styleUrl: './analytics.component.scss',
 })
 export class AnalyticsComponent {
-  chart: any = [];
+  public single: any[] = [
+    {
+      name: 'Germany',
+      value: 8940000,
+    },
+    {
+      name: 'USA',
+      value: 5000000,
+    },
+    {
+      name: 'France',
+      value: 7200000,
+    },
+    {
+      name: 'UK',
+      value: 6200000,
+    },
+    {
+      name: 'Italy',
+      value: 4200000,
+    },
+    {
+      name: 'Spain',
+      value: 8200000,
+    },
+  ];
 
-  constructor() {}
+  // options
+  showLegend: boolean = false;
+  showLabels: boolean = false;
 
-  ngOnInit() {
-    this.chart = new Chart('canvas', {
-      type: 'doughnut',
-      data: {
-        labels: ['Wins', 'Loses'],
-        datasets: [
-          {
-            label: '# of Votes',
-            data: [12, 19],
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-      },
-    });
+  onSelect(event: any) {
+    console.log(event);
   }
+
+  ngOnInit() {}
 }
