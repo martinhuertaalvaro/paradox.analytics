@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "ng-zorro-antd/ng-zorro-antd.variable.min.css";
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 @import "theme/variablesEnergyStudent.scss";
 :root {
@@ -63,13 +63,15 @@
   --fondo-logo-menu: #014262;
   --navbar-background-color: var(--paradox-color-step-900);
   --sidebar-background-color: var(--paradox-color-step-100);
+  --sidebar-submenu-background-color: var(--paradox-color-step-50);
+  --sidebar-item-hover-color: var(--paradox-color-step-300);
   --border-radius: 10px;
 }
 
 body {
   background-color: var(--background-main-color);
   color: var(--text-color);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto";
 }
 
 input {
@@ -78,4 +80,20 @@ input {
 
 button {
   border-radius: var(--border-radius);
+}
+
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected,
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+  background-color: var(--sidebar-item-hover-color);
+}
+
+.ant-menu-dark .ant-menu-inline.ant-menu-sub {
+  background: var(--sidebar-submenu-background-color);
+}
+
+.ant-menu-dark .ant-menu-sub,
+.ant-menu.ant-menu-dark,
+.ant-menu.ant-menu-dark .ant-menu-sub {
+  background: var(--sidebar-submenu-background-color);
 }

@@ -1,0 +1,30 @@
+<div class="mainContainer">
+  <div nz-row class="analyticsContainer">
+    <div nz-col nzSpan="24" class="stats">
+      <ngx-charts-pie-grid
+        [results]="data"
+        (select)="show_on_console_log($event)"
+        [designatedTotal]="100"
+      >
+      </ngx-charts-pie-grid>
+    </div>
+  </div>
+  <div nz-row class="devicesContainer">
+    <div class="stats big">
+      <ngx-charts-area-chart
+        [legend]="legend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxis]="xAxis"
+        [yAxis]="yAxis"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [timeline]="timeline"
+        [results]="multi"
+        (select)="show_on_console_log($event)"
+      >
+      </ngx-charts-area-chart>
+    </div>
+    <div class="stats big"></div>
+  </div>
+</div>

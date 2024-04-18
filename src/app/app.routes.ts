@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 import { AuthComponent } from './modules/auth/layout/auth/auth.component';
 import { LayoutComponent } from './modules/core/layout/layout.component';
-import { MainComponent } from './modules/core/views/main/main.component';
-import { ProfileComponent } from './modules/core/views/user/profile/profile.component';
-import { SettingsComponent } from './modules/core/views/user/settings/settings.component';
-import { AnalyticsComponent } from './modules/core/views/analytics/analytics.component';
-import { DevicesComponent } from './modules/core/views/devices/devices.component';
+import { MainComponent } from './modules/core/pages/main/main.component';
+import { ProfileComponent } from './modules/core/pages/user/views/profile/profile.component';
+import { SettingsComponent } from './modules/core/pages/user/views/settings/settings.component';
+import { AnalyticsComponent } from './modules/core/pages/analytics/analytics.component';
+import { DevicesComponent } from './modules/core/pages/devices/devices.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
