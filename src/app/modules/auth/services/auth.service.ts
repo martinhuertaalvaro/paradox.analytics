@@ -8,6 +8,8 @@ import { ILoginRequest } from '../interfaces/i-login-requests';
 import { ITenantRequest } from '../interfaces/i-tenant-request';
 import { ITenantResponse } from '../interfaces/i-tenant-response';
 import { BaseService } from '../../shared/services/base.service';
+import { EncryptionService } from '../../shared/services/encryption/encryption.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +17,7 @@ import { BaseService } from '../../shared/services/base.service';
 export class AuthService extends BaseService {
   public static LOCAL_STORAGE_KEY_TOKEN = 'access_token';
   _router = inject(Router);
+  ecryptionSvc = inject(EncryptionService);
 
   getAccessToken(): ILoginResponse | null {
     let tokenToString = localStorage.getItem(
@@ -25,6 +28,12 @@ export class AuthService extends BaseService {
       res = JSON.parse(tokenToString) as ILoginResponse;
     }
     return res;
+  }
+
+  getUserFromAccesToken() {
+    let token: any = this.getAccessToken();
+    let decodedToken: any = jwtDecode(token.token);
+    return decodedToken.username;
   }
 
   getTenantId(): any | null {
