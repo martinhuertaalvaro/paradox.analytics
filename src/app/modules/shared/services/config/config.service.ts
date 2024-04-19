@@ -30,7 +30,7 @@ export class ConfigService {
 
       this.favicon =
         this.tenant.toLowerCase() !== 'paradox'
-          ? `assets/img/${this.tenant.toLowerCase()}/favicon.ico`
+          ? `assets/img/${this.tenant.toLowerCase()}/${this.tenant.toLowerCase()}.collapse.svg`
           : `assets/img/${this.tenant.toLowerCase()}/${this.tenant.toLowerCase()}.analytics.collapse.svg`;
       const linkElement = this.document.querySelector(
         "link[rel~='icon']"

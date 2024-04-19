@@ -1,1 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1060.3" height="595.3" viewBox="0 0 1060.3 595.3"><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><rect width="1060.3" height="595.26" fill="#fff"/><polygon points="1060.3 51.9 1060.3 158.9 970.4 210.8 970.4 105.4 970.4 0 1060.3 51.9" fill="#eaa360"/><polygon points="1060.3 0 1060.3 51.9 970.4 0 1060.3 0" fill="#db7e00"/><polygon points="970.4 105.4 970.4 210.8 879.1 158.1 787.9 105.4 879.1 52.7 970.4 0 970.4 105.4" fill="#e5c577"/><polygon points="1060.3 262.7 970.4 210.8 1060.3 158.9 1060.3 262.7" fill="#e6af01"/><polygon points="970.4 0 879.1 52.7 787.9 105.4 787.9 0 970.4 0" fill="#e6af01"/><polygon points="605.3 0 696.6 52.7 787.9 105.4 787.9 0 605.3 0" fill="#eaa360"/><polyline points="90.7 595.3 183 542 275.4 488.6 275.3 595.3" fill="#aad2e8"/><polyline points="460 595.3 367.7 542 275.4 488.6 275.4 595.3" fill="#094e65"/><polygon points="183 435.3 275.4 488.6 183 541.9 90.7 595.3 90.7 488.6 90.7 382 183 435.3" fill="#4693cc"/><polygon points="0 329.7 90.7 382 0 434.3 0 329.7" fill="#aad2e8"/><polygon points="90.7 595.3 0 595.3 0 542.9 90.7 595.3" fill="#015f7b"/><polygon points="90.7 382 90.7 595.3 0 542.9 0 434.3 90.7 382" fill="#094e65"/></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="1060.3" height="595.3" viewBox="0 0 1060.3 595.3" xmlns="http://www.w3.org/2000/svg">
+  <g id="Capa_2" data-name="Capa 2">
+    <g id="Capa_1-2" data-name="Capa 1">
+      <polygon points="1060.3 51.9 1060.3 158.9 970.4 210.8 970.4 105.4 970.4 0 1060.3 51.9" style="fill: rgb(85, 216, 234);"/>
+      <polygon points="1060.3 0 1060.3 51.9 970.4 0 1060.3 0" style="fill: rgb(10, 219, 202);"/>
+      <polygon points="970.4 105.4 970.4 210.8 879.1 158.1 787.9 105.4 879.1 52.7 970.4 0 970.4 105.4" style="fill: rgb(105, 189, 229);"/>
+      <polygon points="1060.3 262.7 970.4 210.8 1060.3 158.9 1060.3 262.7" style="fill: rgb(7, 168, 230);"/>
+      <polygon points="970.4 0 879.1 52.7 787.9 105.4 787.9 0 970.4 0" style="fill: rgb(19, 147, 230);"/>
+      <polygon points="605.3 0 696.6 52.7 787.9 105.4 787.9 0 605.3 0" style="fill: rgb(175, 190, 234);"/>
+      <polyline points="90.7 595.3 183 542 275.4 488.6 275.3 595.3" style="fill: rgb(164, 232, 197);"/>
+      <polyline points="460 595.3 367.7 542 275.4 488.6 275.4 595.3" style="fill: rgb(6, 101, 7);"/>
+      <polygon points="183 435.3 275.4 488.6 183 541.9 90.7 595.3 90.7 488.6 90.7 382 183 435.3" style="fill: rgb(73, 204, 119);"/>
+      <polygon points="0 329.7 90.7 382 0 434.3 0 329.7" style="fill: rgb(151, 232, 176);"/>
+      <polygon points="90.7 595.3 0 595.3 0 542.9 90.7 595.3" style="fill: rgb(23, 123, 10);"/>
+      <polygon points="90.7 382 90.7 595.3 0 542.9 0 434.3 90.7 382" style="fill: rgb(7, 101, 44);"/>
+    </g>
+  </g>
+</svg>
