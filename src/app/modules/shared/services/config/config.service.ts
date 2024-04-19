@@ -23,7 +23,7 @@ export class ConfigService {
   async globalConfig(_forMobile: boolean, tenantForMobile?: string) {
     this.tenant = _forMobile
       ? tenantForMobile
-      : await this.authSvc.getTenantFromUrl(true);
+      : await this.authSvc.getTenantCode();
     console.log(this.tenant);
     if (this.tenant !== '') {
       this.titleSvc.setTitle(this.tenant.toUpperCase());

@@ -32,6 +32,11 @@ export class AuthService extends BaseService {
     return res;
   }
 
+  getTenantCode(): any | null {
+    let res = localStorage.getItem('tenantCode');
+    return res;
+  }
+
   saveToLocalStorageToken(token: ILoginResponse) {
     this.deleteToLocalStorageToken();
     localStorage.setItem(
@@ -46,6 +51,7 @@ export class AuthService extends BaseService {
 
   deleteTenantId() {
     localStorage.removeItem('tenantId');
+    localStorage.removeItem('tenantCode');
   }
 
   login(req: ILoginRequest): Observable<ILoginResponse> {
@@ -90,11 +96,10 @@ export class AuthService extends BaseService {
         this.getTenant(tenantRequest)
       );
       if (data === null) {
-        tenantRequest.code = environment.defaultTenant;
+        tenantRequest.code = this.getTenantCode();
         const data: ITenantResponse = await lastValueFrom(
           this.getTenant(tenantRequest)
         );
-        localStorage.setItem('tenantId', data.id.toString());
         const res = config ? data.code : data.id;
         return res;
       }
