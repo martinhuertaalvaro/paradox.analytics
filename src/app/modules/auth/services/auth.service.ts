@@ -8,6 +8,8 @@ import { ILoginRequest } from '../interfaces/i-login-requests';
 import { ITenantRequest } from '../interfaces/i-tenant-request';
 import { ITenantResponse } from '../interfaces/i-tenant-response';
 import { BaseService } from '../../shared/services/base.service';
+import { EncryptionService } from '../../shared/services/encryption/encryption.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +17,7 @@ import { BaseService } from '../../shared/services/base.service';
 export class AuthService extends BaseService {
   public static LOCAL_STORAGE_KEY_TOKEN = 'access_token';
   _router = inject(Router);
+  ecryptionSvc = inject(EncryptionService);
 
   getAccessToken(): ILoginResponse | null {
     let tokenToString = localStorage.getItem(
@@ -27,8 +30,19 @@ export class AuthService extends BaseService {
     return res;
   }
 
+  getUserFromAccesToken() {
+    let token: any = this.getAccessToken();
+    let decodedToken: any = jwtDecode(token.token);
+    return decodedToken.username;
+  }
+
   getTenantId(): any | null {
     let res = localStorage.getItem('tenantId');
+    return res;
+  }
+
+  getTenantCode(): any | null {
+    let res = localStorage.getItem('tenantCode');
     return res;
   }
 
@@ -46,6 +60,7 @@ export class AuthService extends BaseService {
 
   deleteTenantId() {
     localStorage.removeItem('tenantId');
+    localStorage.removeItem('tenantCode');
   }
 
   login(req: ILoginRequest): Observable<ILoginResponse> {
@@ -90,11 +105,10 @@ export class AuthService extends BaseService {
         this.getTenant(tenantRequest)
       );
       if (data === null) {
-        tenantRequest.code = environment.defaultTenant;
+        tenantRequest.code = this.getTenantCode();
         const data: ITenantResponse = await lastValueFrom(
           this.getTenant(tenantRequest)
         );
-        localStorage.setItem('tenantId', data.id.toString());
         const res = config ? data.code : data.id;
         return res;
       }

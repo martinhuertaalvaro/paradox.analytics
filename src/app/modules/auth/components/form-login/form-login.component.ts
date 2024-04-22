@@ -56,7 +56,8 @@ export class FormLoginComponent {
         res !== null
           ? (this.configSvc.globalConfig(true, res.code),
             (this.tenantExist = true),
-            localStorage.setItem('tenantId', res.id.toString()))
+            localStorage.setItem('tenantId', res.id.toString()),
+            localStorage.setItem('tenantCode', res.code))
           : ((this.tenantExist = null), this.authSvc.deleteTenantId()) /* ,
             this.toastSvc.create(
               'Invalid Credentials',

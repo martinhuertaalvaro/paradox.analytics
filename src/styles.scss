@@ -25,46 +25,17 @@
   --paradox-color-step-950: #f2f2f2;
   --background-main-color: var(--paradox-color-step-900);
   --text-color: var(--paradox-color-step-900);
-  --primary-text-color: #ffffff;
-  --secondary-text-color: #6c757d;
-  --primary-color: #01537b;
-  --info-color: #0285c7;
-  --info-color-background: #e0f5ff;
-  --warning-color: #db7900;
-  --danger-color: #c70d18;
-  --success-color: #449c09;
-  --font-family: Roboto, sans-serif;
-  --content-padding: 1.25rem;
-  --inline-spacing: 0.5rem;
-  --border-radius: 0px;
-  --focus-ring: 0 0 0 0.2rem #a5c1cf;
-  --maskbg: rgba(0, 0, 0, 0.4);
-  --button-actions-size: 16px;
-  --button-header-size: 20px;
   --PARADOX-background: url("/assets/img/paradox/fondo.svg");
-  --PARADOX-menu: url("/assets/img/paradox/PARADOX-expanded.svg");
-  --PARADOX-menu-collapsed: url("/assets/img/paradox/PARADOX-shrinked.svg");
+  --PARADOX-navbar: url("/assets/img/paradox/paradox.analytics.dark.svg");
+  --PARADOX-navbar-collapsed: url("/assets/img/paradox/paradox.analytics.collapse.svg");
   --PARADOX-logo: url("/assets/img/paradox/paradox.analytics.svg");
   --PARADOX-logo-white: url("/assets/img/paradox/paradox.analytics.dark.svg");
   --PARADOX-logo-collapsed: url("/assets/img/paradox/paradox.analytics.collapse.svg");
-  --background-light: #f8f9fa;
-  --background-menu: #014262;
-  --background-secondary: #ebedef;
-  --background-children-menu: #014262;
-  --background-parent-menu: #01537b;
-  --background-active-menu: #a5c1cf;
-  --text-active-menu: #ffffff;
-  --hover-color: #012b40;
-  --hover-border-color: #003854;
-  --hover-text-color: #01537b;
-  --hover-bg-color: #a5c1cf;
-  --scrollbar-bar-color: #a5c1cf;
-  --dialog-x-color: #ffffff;
-  --fondo-logo-menu: #014262;
+
   --navbar-background-color: var(--paradox-color-step-900);
   --sidebar-background-color: var(--paradox-color-step-100);
   --sidebar-submenu-background-color: var(--paradox-color-step-50);
-  --sidebar-item-hover-color: var(--paradox-color-step-300);
+  --sidebar-item-selected-color: var(--paradox-color-step-300);
   --border-radius: 10px;
 }
 
@@ -85,7 +56,7 @@ button {
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected,
 .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected,
 .ant-menu.ant-menu-dark .ant-menu-item-selected {
-  background-color: var(--sidebar-item-hover-color);
+  background-color: var(--sidebar-item-selected-color);
 }
 
 .ant-menu-dark .ant-menu-inline.ant-menu-sub {

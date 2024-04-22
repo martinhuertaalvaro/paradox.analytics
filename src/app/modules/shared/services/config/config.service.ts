@@ -23,14 +23,14 @@ export class ConfigService {
   async globalConfig(_forMobile: boolean, tenantForMobile?: string) {
     this.tenant = _forMobile
       ? tenantForMobile
-      : await this.authSvc.getTenantFromUrl(true);
+      : await this.authSvc.getTenantCode();
     console.log(this.tenant);
     if (this.tenant !== '') {
       this.titleSvc.setTitle(this.tenant.toUpperCase());
 
       this.favicon =
         this.tenant.toLowerCase() !== 'paradox'
-          ? `assets/img/${this.tenant.toLowerCase()}/favicon.ico`
+          ? `assets/img/${this.tenant.toLowerCase()}/${this.tenant.toLowerCase()}.collapse.svg`
           : `assets/img/${this.tenant.toLowerCase()}/${this.tenant.toLowerCase()}.analytics.collapse.svg`;
       const linkElement = this.document.querySelector(
         "link[rel~='icon']"
