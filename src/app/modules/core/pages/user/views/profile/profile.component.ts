@@ -12,4 +12,13 @@ import { AuthService } from '../../../../../auth/services/auth.service';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
-export class ProfileComponent {}
+export class ProfileComponent {
+  protected userSvc = inject(UserService);
+  protected authSvc = inject(AuthService);
+  async ngOnInit() {
+    const users = await lastValueFrom(
+      this.userSvc.getUserInfo(this.authSvc.getUserFromAccesToken())
+    );
+    console.log(users);
+  }
+}

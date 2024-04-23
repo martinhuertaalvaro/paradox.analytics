@@ -68,7 +68,7 @@
         style="width: 100%; font-weight: bold"
       ></nz-breadcrumb>
       <div style="margin-right: 2%">
-        {{ user }}
+        <a [routerLink]="['user', 'profile']" style="color: gray">{{ user }}</a>
       </div>
     </nz-header>
     <br />
