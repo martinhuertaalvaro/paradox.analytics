@@ -6,13 +6,16 @@ import { ProfileComponent } from './modules/core/pages/user/views/profile/profil
 import { SettingsComponent } from './modules/core/pages/user/views/settings/settings.component';
 import { AnalyticsComponent } from './modules/core/pages/analytics/analytics.component';
 import { DevicesComponent } from './modules/core/pages/devices/devices.component';
+import { coreGuard } from './modules/shared/guards/core.guard';
+import { authGuard } from './modules/shared/guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  { path: 'auth', component: AuthComponent },
+  { path: 'auth', component: AuthComponent, canActivate: [authGuard] },
   {
     path: 'core',
     component: LayoutComponent,
+    canActivate: [coreGuard],
     children: [
       { path: '', redirectTo: 'main', pathMatch: 'full' },
       {
@@ -33,17 +36,17 @@ export const routes: Routes = [
             path: 'profile',
             component: ProfileComponent,
             data: {
-              customBreadcrumb: 'Profile',
-            },
-          },
-          {
-            path: 'settings',
-            component: SettingsComponent,
-            data: {
-              customBreadcrumb: 'Settings',
+              customBreadcrumb: 'My Profile',
             },
           },
         ],
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
+        data: {
+          customBreadcrumb: 'Settings',
+        },
       },
       {
         path: 'analytics',

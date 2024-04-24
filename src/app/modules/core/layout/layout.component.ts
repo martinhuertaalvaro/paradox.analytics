@@ -5,6 +5,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { UserService } from '../pages/user/services/user.service';
 import { AuthService } from '../../auth/services/auth.service';
 import { jwtDecode } from 'jwt-decode';
+import { LogoutService } from '../../shared/services/logout/logout.service';
 
 @Component({
   selector: 'app-layout',
@@ -25,6 +26,7 @@ export class LayoutComponent {
   isAzure: boolean = false;
 
   private authSvc = inject(AuthService);
+  public logoutSvc = inject(LogoutService);
   public user: string = this.authSvc.getUserFromAccesToken().toUpperCase();
 
   async ngOnInit() {}

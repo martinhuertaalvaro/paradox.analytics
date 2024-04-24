@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class BaseService {
   public baseUrlAuth = `${environment.apiGateway}/api-auth`;
   public baseUrlMaestros = `${environment.apiGateway}/api-master`;
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, public router: Router) {}
 
   buildQueryParams(request: any) {
     let queryParams = new HttpParams();

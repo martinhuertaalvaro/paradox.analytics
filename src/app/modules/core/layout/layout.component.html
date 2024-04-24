@@ -34,22 +34,39 @@
           <li nz-menu-item [routerLink]="['devices']">Device 2</li>
         </ul>
       </li>
-      <li class="navbarItem" nz-submenu nzTitle="User" nzIcon="user">
-        <ul>
-          <li nz-menu-item [routerLink]="['user', 'profile']">Profile</li>
-          <li nz-menu-item [routerLink]="['user', 'settings']">Settings</li>
-        </ul>
-      </li>
       <li class="navbarItem" nz-submenu nzTitle="Team" nzIcon="team">
         <ul>
           <li nz-menu-item>Team 1</li>
           <li nz-menu-item>Team 2</li>
         </ul>
       </li>
-      <li class="navbarItem" nz-menu-item [routerLink]="['main']">
-        <a style="display: flex; align-items: center" [routerLink]="['main']">
+      <li class="navbarItem" nz-submenu nzTitle="Users" nzIcon="user">
+        <ul>
+          <li nz-menu-item [routerLink]="['user', 'usermanager']">
+            User Manager
+          </li>
+          <li nz-menu-item [routerLink]="['user', 'friends']">Friends</li>
+          <li nz-menu-item [routerLink]="['user', 'profile']">My Profile</li>
+        </ul>
+      </li>
+      <li class="navbarItem" nz-menu-item [routerLink]="['settings']">
+        <a
+          style="display: flex; align-items: center"
+          [routerLink]="['settings']"
+        >
           <i nz-icon nzType="setting" nzTheme="outline"></i>
           <span>Settings</span>
+        </a>
+      </li>
+      <li
+        class="navbarItem"
+        style="align-self: end"
+        nz-menu-item
+        (click)="this.logoutSvc.logout()"
+      >
+        <a style="display: flex; align-items: center">
+          <i nz-icon nzType="logout" nzTheme="outline"></i>
+          <span>Logout</span>
         </a>
       </li>
     </ul>

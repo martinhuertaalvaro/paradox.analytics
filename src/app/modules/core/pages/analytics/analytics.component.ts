@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ZorroNgModule } from '../../../ng-zorro/zorro-ng.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { lastValueFrom } from 'rxjs';
+import { AnalyticsService } from './services/analytics.service';
 
 @Component({
   selector: 'app-analytics',
@@ -10,6 +12,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   styleUrl: './analytics.component.scss',
 })
 export class AnalyticsComponent {
+  private analyticsSvc = inject(AnalyticsService);
   public data: any[] = [];
   public create_ngx_charts_pie_grid(data: any[]) {
     this.single.forEach((e) => {
@@ -51,8 +54,10 @@ export class AnalyticsComponent {
     console.log(event);
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.create_ngx_charts_pie_grid(this.single);
+    let res = await lastValueFrom(this.analyticsSvc.getRaspberryInfo());
+    console.log(res);
   }
 
   // options
