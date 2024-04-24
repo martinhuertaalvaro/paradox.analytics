@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class AnalyticsService extends BaseService {
   getRaspberryInfo(): Observable<any> {
-    return this.http.get<any>(
-      `https://f2pwg9pl-50100.uks1.devtunnels.ms/raspberry`
-    );
+    return this.http.get<any>(`http://192.168.43.16:50100/raspberry`);
   }
 }

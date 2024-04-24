@@ -12,6 +12,7 @@ import { AnalyticsService } from './services/analytics.service';
   styleUrl: './analytics.component.scss',
 })
 export class AnalyticsComponent {
+  public raspberryInfo: any;
   private analyticsSvc = inject(AnalyticsService);
   public data: any[] = [];
   public create_ngx_charts_pie_grid(data: any[]) {
@@ -56,8 +57,10 @@ export class AnalyticsComponent {
 
   async ngOnInit() {
     this.create_ngx_charts_pie_grid(this.single);
-    let res = await lastValueFrom(this.analyticsSvc.getRaspberryInfo());
-    console.log(res);
+    this.raspberryInfo = await lastValueFrom(
+      this.analyticsSvc.getRaspberryInfo()
+    );
+    console.log(this.raspberryInfo);
   }
 
   // options

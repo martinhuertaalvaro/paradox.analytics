@@ -3,7 +3,8 @@ import { AuthComponent } from './modules/auth/layout/auth/auth.component';
 import { LayoutComponent } from './modules/core/layout/layout.component';
 import { MainComponent } from './modules/core/pages/main/main.component';
 import { ProfileComponent } from './modules/core/pages/user/views/profile/profile.component';
-import { SettingsComponent } from './modules/core/pages/user/views/settings/settings.component';
+import { ManagementComponent } from./modules/core/pages/settings/settings.componentponent';
+import { SettingsComponent } from './modules/core/pages/settings/settings.component';
 import { AnalyticsComponent } from './modules/core/pages/analytics/analytics.component';
 import { DevicesComponent } from './modules/core/pages/devices/devices.component';
 import { coreGuard } from './modules/shared/guards/core.guard';
@@ -31,7 +32,14 @@ export const routes: Routes = [
           customBreadcrumb: 'User',
         },
         children: [
-          { path: '', redirectTo: 'profile', pathMatch: 'full' },
+          { path: '', redirectTo: 'management', pathMatch: 'full' },
+          {
+            path: 'management',
+            component: ManagementComponent,
+            data: {
+              customBreadcrumb: 'Management',
+            },
+          },
           {
             path: 'profile',
             component: ProfileComponent,
