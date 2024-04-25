@@ -3,12 +3,12 @@ import { AuthComponent } from './modules/auth/layout/auth/auth.component';
 import { LayoutComponent } from './modules/core/layout/layout.component';
 import { MainComponent } from './modules/core/pages/main/main.component';
 import { ProfileComponent } from './modules/core/pages/user/views/profile/profile.component';
-import { ManagementComponent } from./modules/core/pages/settings/settings.componentponent';
 import { SettingsComponent } from './modules/core/pages/settings/settings.component';
 import { AnalyticsComponent } from './modules/core/pages/analytics/analytics.component';
 import { DevicesComponent } from './modules/core/pages/devices/devices.component';
 import { coreGuard } from './modules/shared/guards/core.guard';
 import { authGuard } from './modules/shared/guards/auth.guard';
+import { ManagementComponent } from './modules/core/pages/user/views/management/management.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },

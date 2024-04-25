@@ -30,8 +30,8 @@
       </li>
       <li class="navbarItem" nz-submenu nzTitle="Devices" nzIcon="mobile">
         <ul>
-          <li nz-menu-item [routerLink]="['devices']">Device 1</li>
-          <li nz-menu-item [routerLink]="['devices']">Device 2</li>
+          <li nz-menu-item [routerLink]="['devices']">Name ID</li>
+          <li nz-menu-item [routerLink]="['devices']">Name ID</li>
         </ul>
       </li>
       <li class="navbarItem" nz-submenu nzTitle="Team" nzIcon="team">
@@ -58,17 +58,6 @@
           <span>Settings</span>
         </a>
       </li>
-      <li
-        class="navbarItem"
-        style="align-self: end"
-        nz-menu-item
-        (click)="this.logoutSvc.logout()"
-      >
-        <a style="display: flex; align-items: center">
-          <i nz-icon nzType="logout" nzTheme="outline"></i>
-          <span>Logout</span>
-        </a>
-      </li>
     </ul>
   </nz-sider>
   <nz-layout>
@@ -84,8 +73,17 @@
         [nzRouteLabel]="'customBreadcrumb'"
         style="width: 100%; font-weight: bold"
       ></nz-breadcrumb>
-      <div style="margin-right: 2%">
+      <div style="margin-right: 1%">
         <a [routerLink]="['user', 'profile']" style="color: gray">{{ user }}</a>
+      </div>
+      <div style="margin-right: 2%; display: flex">
+        <i
+          (click)="this.logoutSvc.logout()"
+          style="font-size: large"
+          nz-icon
+          nzType="logout"
+          nzTheme="outline"
+        ></i>
       </div>
     </nz-header>
     <br />

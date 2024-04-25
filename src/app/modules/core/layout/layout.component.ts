@@ -27,7 +27,7 @@ export class LayoutComponent {
 
   private authSvc = inject(AuthService);
   public logoutSvc = inject(LogoutService);
-  public user: string = this.authSvc.getUserFromAccesToken().toUpperCase();
+  public user: string = this.authSvc.getUserFromAccesToken().toLowerCase();
 
   async ngOnInit() {}
 
