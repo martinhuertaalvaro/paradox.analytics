@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ZorroNgModule } from '../../ng-zorro/zorro-ng.module';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { UserService } from '../pages/user/services/user.service';
 import { AuthService } from '../../auth/services/auth.service';
 import { jwtDecode } from 'jwt-decode';
 import { LogoutService } from '../../shared/services/logout/logout.service';
+import { lastValueFrom } from 'rxjs';
+import { User } from '../pages/user/interfaces/user';
 
 @Component({
   selector: 'app-layout',
@@ -19,17 +21,24 @@ import { LogoutService } from '../../shared/services/logout/logout.service';
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {
-  isCollapsed: boolean = false;
-  isAzure: boolean = false;
-
+  public isCollapsed: boolean = false;
+  private static ADMINKEY = 'ROLE_ADMIN';
+  public hasAdminRole: boolean = false;
+  public userInfo: User = {};
   private authSvc = inject(AuthService);
+  private userSvc = inject(UserService);
   public logoutSvc = inject(LogoutService);
   public user: string = this.authSvc.getUserFromAccesToken().toLowerCase();
 
-  async ngOnInit() {}
+  async ngOnInit() {
+    this.userInfo = await lastValueFrom(this.userSvc.getUserInfo(this.user));
+    if (this.userInfo.roles?.[0] == LayoutComponent.ADMINKEY) {
+      this.hasAdminRole = true;
+    }
+    console.log(this.userInfo);
+  }
 
   toggleCollapsed(): void {
     this.isCollapsed = !this.isCollapsed;

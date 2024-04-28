@@ -19,7 +19,12 @@
           <span>Home</span>
         </a>
       </li>
-      <li class="navbarItem" nz-menu-item [routerLink]="['analytics']">
+      <li
+        *ngIf="userInfo.devices?.length! >= 1"
+        class="navbarItem"
+        nz-menu-item
+        [routerLink]="['analytics']"
+      >
         <a
           style="display: flex; align-items: center"
           [routerLink]="['analytics']"
@@ -30,19 +35,43 @@
       </li>
       <li class="navbarItem" nz-submenu nzTitle="Devices" nzIcon="mobile">
         <ul>
-          <li nz-menu-item [routerLink]="['devices']">Name ID</li>
-          <li nz-menu-item [routerLink]="['devices']">Name ID</li>
+          <li
+            *ngIf="userInfo.devices?.length! < 1"
+            nz-menu-item
+            [routerLink]="['create', 'device']"
+          >
+            New Device
+          </li>
+          <li
+            *ngIf="userInfo.devices?.length! >= 1"
+            nz-menu-item
+            [routerLink]="['devices', '1']"
+          >
+            Name ID
+          </li>
         </ul>
       </li>
       <li class="navbarItem" nz-submenu nzTitle="Team" nzIcon="team">
         <ul>
-          <li nz-menu-item>Team 1</li>
-          <li nz-menu-item>Team 2</li>
+          <li
+            *ngIf="userInfo.teams?.length! < 1"
+            nz-menu-item
+            [routerLink]="['create', 'team']"
+          >
+            New Team
+          </li>
+          <li *ngFor="let teamName of userInfo.teams" nz-menu-item>
+            {{ teamName }}
+          </li>
         </ul>
       </li>
       <li class="navbarItem" nz-submenu nzTitle="Users" nzIcon="user">
         <ul>
-          <li nz-menu-item [routerLink]="['user', 'usermanager']">
+          <li
+            *ngIf="hasAdminRole"
+            nz-menu-item
+            [routerLink]="['user', 'usermanager']"
+          >
             Management
           </li>
           <li nz-menu-item [routerLink]="['user', 'friends']">Friends</li>

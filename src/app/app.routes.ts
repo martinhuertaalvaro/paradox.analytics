@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { ActivatedRoute, Routes } from '@angular/router';
 import { AuthComponent } from './modules/auth/layout/auth/auth.component';
 import { LayoutComponent } from './modules/core/layout/layout.component';
 import { MainComponent } from './modules/core/pages/main/main.component';
@@ -65,10 +65,20 @@ export const routes: Routes = [
       },
       {
         path: 'devices',
-        component: DevicesComponent,
         data: {
           customBreadcrumb: 'Devices',
         },
+        children: [
+          { path: '', redirectTo: '/home', pathMatch: 'full' },
+
+          {
+            path: ':name',
+            component: DevicesComponent,
+            data: {
+              customBreadcrumb: 'Details',
+            },
+          },
+        ],
       },
     ],
   },
