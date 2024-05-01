@@ -1,7 +1,7 @@
 export interface User {
   id?: number;
   email?: string;
-  devices?: Array<number>;
+  devices?: Array<string>;
   name?: string | undefined | null;
   password?: string | undefined | null;
   roles?: Array<string>;

@@ -42,12 +42,13 @@
           >
             New Device
           </li>
+
           <li
-            *ngIf="userInfo.devices?.length! >= 1"
+            *ngFor="let deviceName of userInfo.devices"
             nz-menu-item
-            [routerLink]="['devices', '1']"
+            [routerLink]="['devices', deviceName]"
           >
-            Name ID
+            {{ deviceName }}
           </li>
         </ul>
       </li>
@@ -60,7 +61,11 @@
           >
             New Team
           </li>
-          <li *ngFor="let teamName of userInfo.teams" nz-menu-item>
+          <li
+            *ngFor="let teamName of userInfo.teams"
+            nz-menu-item
+            [routerLink]="['devices', teamName]"
+          >
             {{ teamName }}
           </li>
         </ul>
