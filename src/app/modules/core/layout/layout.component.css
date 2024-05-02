@@ -33,6 +33,7 @@ nz-header {
   padding: 0;
   margin: 0.75% 0.7% 1px 0.2%;
   border-radius: var(--border-radius);
+  border: 2px solid var(--sidebar-background-color);
 }
 
 nz-sider,
