@@ -1,9 +1,15 @@
 <div class="mainContainer">
   <ul nz-menu nzMode="horizontal" style="width: fit-content">
     <li nz-menu-item nzDisabled="true">Create New :</li>
-    <li nz-menu-item [routerLink]="['user']">USER</li>
-    <li nz-menu-item [routerLink]="['team']">TEAM</li>
-    <li nz-menu-item [routerLink]="['device']">DEVICE</li>
+    <li nz-menu-item [routerLink]="['user']">
+      <span nz-icon nzType="user" nzTheme="outline">USER </span>
+    </li>
+    <li nz-menu-item [routerLink]="['team']">
+      <span nz-icon nzType="team" nzTheme="outline">TEAM </span>
+    </li>
+    <li nz-menu-item [routerLink]="['device']">
+      <span nz-icon nzType="mobile" nzTheme="outline">DEVICE </span>
+    </li>
   </ul>
 
   <router-outlet></router-outlet>

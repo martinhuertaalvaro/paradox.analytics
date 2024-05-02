@@ -67,24 +67,24 @@
           </li>
         </ul>
       </li>
-      <li class="navbarItem" nz-submenu nzTitle="Users" nzIcon="user">
-        <ul>
-          <li nz-menu-item [routerLink]="['user', 'friends']">Friends</li>
-          <li nz-menu-item [routerLink]="['user', 'profile']">My Profile</li>
-        </ul>
-      </li>
       <li
         *ngIf="hasAdminRole"
         class="navbarItem"
         nz-submenu
         nzTitle="Admin"
-        nzIcon="team"
+        nzIcon="safety"
       >
         <ul>
           <li nz-menu-item [routerLink]="['admin', 'management']">
             Management
           </li>
           <li nz-menu-item [routerLink]="['admin', 'create']">Create</li>
+        </ul>
+      </li>
+      <li class="navbarItem" nz-submenu nzTitle="You" nzIcon="user">
+        <ul>
+          <li nz-menu-item [routerLink]="['user', 'friends']">Friends</li>
+          <li nz-menu-item [routerLink]="['user', 'profile']">My Profile</li>
         </ul>
       </li>
       <li class="navbarItem" nz-menu-item [routerLink]="['settings']">
