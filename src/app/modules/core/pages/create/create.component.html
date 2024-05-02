@@ -1,8 +1,9 @@
 <div class="mainContainer">
-  <ul nz-menu nzMode="horizontal">
-    <li nz-menu-item nzSelected>Navigation One</li>
-    <li nz-menu-item nzSelected>Navigation One</li>
-    <li nz-menu-item nzSelected>Navigation One</li>
+  <ul nz-menu nzMode="horizontal" style="width: fit-content">
+    <li nz-menu-item nzDisabled="true">Create New :</li>
+    <li nz-menu-item [routerLink]="['user']">USER</li>
+    <li nz-menu-item [routerLink]="['team']">TEAM</li>
+    <li nz-menu-item [routerLink]="['device']">DEVICE</li>
   </ul>
 
   <router-outlet></router-outlet>

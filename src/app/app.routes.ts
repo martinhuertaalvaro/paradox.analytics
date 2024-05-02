@@ -35,14 +35,7 @@ export const routes: Routes = [
           customBreadcrumb: 'User',
         },
         children: [
-          { path: '', redirectTo: 'management', pathMatch: 'full' },
-          {
-            path: 'management',
-            component: ManagementComponent,
-            data: {
-              customBreadcrumb: 'Management',
-            },
-          },
+          { path: '', redirectTo: 'profile', pathMatch: 'full' },
           {
             path: 'profile',
             component: ProfileComponent,
@@ -72,7 +65,7 @@ export const routes: Routes = [
           customBreadcrumb: 'Device',
         },
         children: [
-          { path: '', redirectTo: '/home', pathMatch: 'full' },
+          { path: '', redirectTo: '/analytics', pathMatch: 'full' },
 
           {
             path: ':name',
@@ -100,16 +93,33 @@ export const routes: Routes = [
           },
         ],
       },
+
       {
-        path: 'create',
-        component: CreateComponent,
+        path: 'admin',
         data: {
-          customBreadcrumb: 'Create',
+          customBreadcrumb: 'Admin',
         },
         children: [
+          { path: '', redirectTo: 'management', pathMatch: 'full' },
           {
-            path: ':entity',
-            component: FormCreateComponent,
+            path: 'management',
+            component: ManagementComponent,
+            data: {
+              customBreadcrumb: 'Management',
+            },
+          },
+          {
+            path: 'create',
+            component: CreateComponent,
+            data: {
+              customBreadcrumb: 'Create',
+            },
+            children: [
+              {
+                path: ':entity',
+                component: FormCreateComponent,
+              },
+            ],
           },
         ],
       },

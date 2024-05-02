@@ -33,16 +33,14 @@
           <span>Analytics</span>
         </a>
       </li>
-      <li class="navbarItem" nz-submenu nzTitle="Devices" nzIcon="mobile">
+      <li
+        *ngIf="userInfo.devices?.length! >= 1"
+        class="navbarItem"
+        nz-submenu
+        nzTitle="Devices"
+        nzIcon="mobile"
+      >
         <ul>
-          <li
-            *ngIf="userInfo.devices?.length! < 1"
-            nz-menu-item
-            [routerLink]="['create', 'device']"
-          >
-            New Device
-          </li>
-
           <li
             *ngFor="let deviceName of userInfo.devices"
             nz-menu-item
@@ -52,19 +50,18 @@
           </li>
         </ul>
       </li>
-      <li class="navbarItem" nz-submenu nzTitle="Team" nzIcon="team">
+      <li
+        *ngIf="userInfo.teams?.length! >= 1"
+        class="navbarItem"
+        nz-submenu
+        nzTitle="Team"
+        nzIcon="team"
+      >
         <ul>
-          <li
-            *ngIf="userInfo.teams?.length! < 1"
-            nz-menu-item
-            [routerLink]="['create', 'team']"
-          >
-            New Team
-          </li>
           <li
             *ngFor="let teamName of userInfo.teams"
             nz-menu-item
-            [routerLink]="['devices', teamName]"
+            [routerLink]="['teams', teamName]"
           >
             {{ teamName }}
           </li>
@@ -72,15 +69,22 @@
       </li>
       <li class="navbarItem" nz-submenu nzTitle="Users" nzIcon="user">
         <ul>
-          <li
-            *ngIf="hasAdminRole"
-            nz-menu-item
-            [routerLink]="['user', 'usermanager']"
-          >
-            Management
-          </li>
           <li nz-menu-item [routerLink]="['user', 'friends']">Friends</li>
           <li nz-menu-item [routerLink]="['user', 'profile']">My Profile</li>
+        </ul>
+      </li>
+      <li
+        *ngIf="hasAdminRole"
+        class="navbarItem"
+        nz-submenu
+        nzTitle="Admin"
+        nzIcon="team"
+      >
+        <ul>
+          <li nz-menu-item [routerLink]="['admin', 'management']">
+            Management
+          </li>
+          <li nz-menu-item [routerLink]="['admin', 'create']">Create</li>
         </ul>
       </li>
       <li class="navbarItem" nz-menu-item [routerLink]="['settings']">
