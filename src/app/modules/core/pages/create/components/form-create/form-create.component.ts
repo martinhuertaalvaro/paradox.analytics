@@ -16,31 +16,31 @@ import { ZorroNgModule } from '../../../../../ng-zorro/zorro-ng.module';
 export class FormCreateComponent {
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder) {
     this.route.params.subscribe((params) => {
-      let lastEntity = this.entity;
       this.entity = params['entity'];
-      if (lastEntity != this.entity) {
-        this.generateForm();
-      }
+      this.generateForm();
     });
   }
+  public keys: any;
   public form: FormGroup = this.formBuilder.group({});
   public modelEntity: any;
-  public modelFormKeys: any;
   public entity: string = '';
   public formCreateSvc = inject(FormCreateService);
 
-  async ngOnInit() {
-    this.generateForm();
-  }
+  async ngOnInit() {}
 
   protected async generateForm() {
     this.modelEntity = await lastValueFrom(
       this.formCreateSvc.getProperties(this.entity)
     );
-    this.modelFormKeys = Object.keys(this.modelEntity);
-    console.log(this.modelFormKeys);
-    this.modelFormKeys.forEach((key: string) => {
-      this.form.addControl(key, this.formBuilder.control(''));
+    console.log(this.modelEntity);
+    Object.keys(this.modelEntity).forEach((key: string) => {
+      if (this.checkKey(key))
+        this.form.addControl(key, this.formBuilder.control(''));
     });
+    this.keys = Object.keys(this.form.controls);
+  }
+
+  private checkKey(key: string) {
+    return !Array.isArray(this.modelEntity[key]) && key != ('id' && 'tenantId');
   }
 }
