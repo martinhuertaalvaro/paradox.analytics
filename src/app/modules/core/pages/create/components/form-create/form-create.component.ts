@@ -17,6 +17,7 @@ export class FormCreateComponent {
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder) {
     this.route.params.subscribe((params) => {
       this.entity = params['entity'];
+
       this.generateForm();
     });
   }
@@ -29,6 +30,8 @@ export class FormCreateComponent {
   async ngOnInit() {}
 
   protected async generateForm() {
+    this.keys = null;
+    this.resetForm();
     this.modelEntity = await lastValueFrom(
       this.formCreateSvc.getProperties(this.entity)
     );
@@ -41,6 +44,16 @@ export class FormCreateComponent {
   }
 
   private checkKey(key: string) {
-    return !Array.isArray(this.modelEntity[key]) && key != ('id' && 'tenantId');
+    return !Array.isArray(this.modelEntity[key]) && this.keyIsNot(key);
+  }
+
+  private resetForm() {
+    Object.keys(this.form.controls).forEach((key) => {
+      this.form.removeControl(key);
+    });
+  }
+
+  private keyIsNot(key: string): boolean {
+    return key !== 'id' && key !== 'tenantId' && key !== 'userIdentifier';
   }
 }
