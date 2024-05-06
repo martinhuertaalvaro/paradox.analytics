@@ -6,6 +6,7 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { ZorroNgModule } from '../../../ng-zorro/zorro-ng.module';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-create',
@@ -14,4 +15,6 @@ import { ZorroNgModule } from '../../../ng-zorro/zorro-ng.module';
   templateUrl: './create.component.html',
   styleUrl: './create.component.scss',
 })
-export class CreateComponent {}
+export class CreateComponent {
+  constructor() {}
+}
