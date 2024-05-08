@@ -113,3 +113,10 @@ button {
     border-color: var(--sidebar-background-color);
   }
 }
+
+.form-select {
+  &:focus {
+    box-shadow: var(--box-shadow);
+    border-color: var(--sidebar-background-color);
+  }
+}

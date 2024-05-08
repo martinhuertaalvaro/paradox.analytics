@@ -31,7 +31,7 @@ export class UserFormComponent {
       name: ['', Validators.required],
       surname: ['', Validators.required],
       city: ['', Validators.required],
-      gender: ['default', Validators.required],
+      workfield: ['Support', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
