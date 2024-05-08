@@ -1,53 +1,84 @@
-<main>
-  <div class="container mt-4">
-    <form>
-      <h2 class="mb-4">REGISTER NEW USER</h2>
+<main style="height: 90%; display: flex; align-items: center">
+  <div class="container mb-5">
+    <form [formGroup]="registerForm" (ngSubmit)="checkForm()">
+      <h2 class="mb-5">REGISTER NEW USER</h2>
       <div class="row">
-        <div class="col-md-3 mb-2">
+        <div class="col-md-3 mb-5">
           <input
             type="text"
             class="form-control"
             id="campo1"
             placeholder="Name"
+            formControlName="name"
             required
           />
         </div>
-        <div class="col-md-3 mb-2">
+        <div class="col-md-3 mb-5">
           <input
             type="text"
             class="form-control"
             id="campo1"
             placeholder="Surname"
+            formControlName="surname"
             required
           />
         </div>
-        <div class="col-md-6 mb-4">
+        <div class="col-md-4 mb-5">
+          <input
+            type="text"
+            class="form-control"
+            id="campo1"
+            placeholder="City"
+            formControlName="city"
+            required
+          />
+        </div>
+        <div class="col-md-2 mb-5">
+          <select
+            id="campo3"
+            formControlName="gender"
+            name="campo3"
+            class="form-select"
+            required
+          >
+            <option value="default" disabled>Gender</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+            <option value="undefined">undefined</option>
+            <option value="null">null</option>
+            <option value="NaN">NaN</option>
+          </select>
+        </div>
+        <div class="col-md-6 mb-5">
           <input
             type="email"
             class="form-control"
             id="exampleFormControlInput1"
             placeholder="name@example.com"
+            formControlName="email"
           />
         </div>
-        <div class="col-md-6 mb-2">
+        <div class="col-md-3 mb-5">
           <input
             type="text"
             class="form-control"
             id="campo1"
             placeholder="Password"
+            formControlName="password"
             required
           />
         </div>
-        <div class="col-md-6 mb-2">
+        <div class="col-md-3 mb-5">
           <input
             type="text"
             class="form-control"
             id="campo1"
             placeholder="Confirm Password"
+            formControlName="confirmPassword"
             required
           />
         </div>
-        <div class="col-md-6 mb-4">
+        <!-- <div class="col-md-6 mb-5">
           <label for="campo3">Modulos 2 DAW</label>
           <select id="campo3" name="campo3" class="form-select">
             <option value="volvo" selected>Elige Modulo</option>
@@ -55,19 +86,49 @@
             <option value="fiat">Fiat</option>
             <option value="audi">Audi</option>
           </select>
-        </div>
+        </div> -->
 
-        <div class="col-md-6 mb-4">
-          <label for="formFile" class="form-label">Birthdate</label>
+        <div class="col-md-3 mb-5">
+          <label
+            for="formFile"
+            class="form-label"
+            style="color: var(--sidebar-background-color)"
+            >Birthdate</label
+          >
           <input
             type="date"
             class="form-control"
             name="birthdate"
             id="birthdate"
+            formControlName="birthdate"
           />
         </div>
+        <div class="col-md-3 mb-5">
+          <label
+            for="formFile"
+            class="form-label"
+            style="color: var(--sidebar-background-color)"
+            >Date of Register</label
+          >
+          <input
+            type="date"
+            class="form-control"
+            name="birthdate"
+            id="birthdate"
+            [value]="actualDate"
+            disabled
+          />
+        </div>
+        <div class="row" style="justify-content: right">
+          <button
+            style="width: fit-content"
+            class="btn btn-primary"
+            type="submit"
+          >
+            Register User
+          </button>
+        </div>
       </div>
-      <button class="btn btn-primary" type="submit">Enviar formulario</button>
     </form>
   </div>
 </main>

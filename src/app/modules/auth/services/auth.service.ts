@@ -36,6 +36,12 @@ export class AuthService extends BaseService {
     return decodedToken.username;
   }
 
+  getRolesFromAccesToken() {
+    let token: any = this.getAccessToken();
+    let decodedToken: any = jwtDecode(token.token);
+    return decodedToken.roles;
+  }
+
   getTenantId(): any | null {
     let res = localStorage.getItem('tenantId');
     return res;

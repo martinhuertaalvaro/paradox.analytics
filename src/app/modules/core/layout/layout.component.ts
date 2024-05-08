@@ -31,10 +31,9 @@ export class LayoutComponent {
   private userSvc = inject(UserService);
   public logoutSvc = inject(LogoutService);
   public user: string = this.authSvc.getUserFromAccesToken().toUpperCase();
-
+  public userRoles: string = this.authSvc.getRolesFromAccesToken();
   async ngOnInit() {
-    this.userInfo = await lastValueFrom(this.userSvc.getUserInfo(this.user));
-    if (this.userInfo.roles?.[0] == LayoutComponent.ADMINKEY) {
+    if (this.userRoles[0] == LayoutComponent.ADMINKEY) {
       this.hasAdminRole = true;
     }
     console.log(this.userInfo);

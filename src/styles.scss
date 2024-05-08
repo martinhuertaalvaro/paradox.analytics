@@ -106,3 +106,10 @@ button {
     border-color: var(--sidebar-background-color);
   }
 }
+
+.form-control {
+  &:focus {
+    box-shadow: var(--box-shadow);
+    border-color: var(--sidebar-background-color);
+  }
+}
