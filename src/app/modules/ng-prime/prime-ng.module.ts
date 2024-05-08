@@ -4,6 +4,8 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 
 /**
  * SharedModule should have anything but services and be imported in all modules that need the shared stuff (which could also be the AppModule).
@@ -15,6 +17,8 @@ const COMPONENTS = [
   ToastModule,
   FormsModule,
   InputTextModule,
+  InputGroupModule,
+  InputGroupAddonModule,
 ];
 @NgModule({
   imports: [...COMPONENTS],

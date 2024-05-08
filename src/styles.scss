@@ -49,12 +49,10 @@ body {
   font-family: "Roboto";
 }
 
-input {
-  border-radius: var(--border-radius);
-}
-
+input,
+select,
 button {
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius) !important;
 }
 
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected,
