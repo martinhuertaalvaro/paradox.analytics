@@ -14,11 +14,12 @@ import { ITenantResponse } from '../../interfaces/i-tenant-response';
 import { Router } from '@angular/router';
 import { ConfigService } from '../../../shared/services/config/config.service';
 import { CommonModule } from '@angular/common';
+import { PrimeNgModule } from '../../../ng-prime/prime-ng.module';
 
 @Component({
   selector: 'app-form-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, PrimeNgModule],
   templateUrl: './form-login.component.html',
   styleUrl: './form-login.component.scss',
 })

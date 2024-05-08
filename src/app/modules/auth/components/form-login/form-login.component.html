@@ -1,48 +1,74 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div *ngIf="!tenantExist" style="align-items: center" class="inputForm">
+  <div *ngIf="!tenantExist" style="align-items: center" class="inputForm row">
     <input
+      pInputText
+      aria-describedby="username-help"
       type="text"
       id="client"
       name="client"
       formControlName="tenantId"
-      placeholder="Client"
-      style="height: min-content"
+      style="height: 20px; color: rgb(145, 143, 143)"
+      class="col-md-6"
     />
     <button
-      style="margin-left: 5px"
-      size="small"
-      shape="round"
+      style="
+        margin-left: 5px;
+        height: 20px;
+        border: none;
+        color: rgb(145, 143, 143);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+      "
       type="submit"
-      fill="outline"
+      class="col-md-1"
     >
       >
     </button>
+    <small
+      id="username-help"
+      style="color: rgb(145, 143, 143); padding-right: 10%"
+    >
+      Enter your client code to acces.
+    </small>
   </div>
   <div *ngIf="tenantExist">
-    <div class="inputForm">
+    <div class="inputForm row">
       <input
+        pInputText
+        style="height: 20px; color: rgb(145, 143, 143)"
         type="email"
         id="username"
         name="username"
         formControlName="username"
         placeholder="Username"
+        class="col-md-7"
       />
-    </div>
-    <div class="inputForm second">
       <input
+        pInputText
         type="password"
         id="password"
         name="password"
         formControlName="password"
         placeholder="Password"
-        style="height: min-content"
+        style="height: 20px; color: rgb(145, 143, 143); margin-top: 5px"
+        class="col-md-7"
       />
+    </div>
+    <div class="buttondiv row">
       <button
-        style="margin-left: 5px"
-        size="small"
-        shape="round"
+        style="
+          margin-left: 5px;
+          height: 20px;
+          border: none;
+          color: rgb(145, 143, 143);
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
         type="submit"
-        fill="outline"
+        class="col-md-2"
       >
         >>
       </button>
