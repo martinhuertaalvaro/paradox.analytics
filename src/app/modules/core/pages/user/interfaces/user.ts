@@ -9,4 +9,9 @@ export interface User {
   teams?: Array<string>;
   tenantId?: number;
   userIdentifier?: string;
+  city?: string;
+  workfield?: string;
+  active?: boolean;
+  birthdate?: string;
+  registerdate?: string;
 }

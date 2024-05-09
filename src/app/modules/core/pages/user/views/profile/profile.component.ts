@@ -1,9 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { lastValueFrom } from 'rxjs';
-import { EncryptionService } from '../../../../../shared/services/encryption/encryption.service';
-import { jwtDecode } from 'jwt-decode';
 import { AuthService } from '../../../../../auth/services/auth.service';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-profile',
@@ -15,10 +14,10 @@ import { AuthService } from '../../../../../auth/services/auth.service';
 export class ProfileComponent {
   protected userSvc = inject(UserService);
   protected authSvc = inject(AuthService);
+  public user: User = {};
   async ngOnInit() {
-    const users = await lastValueFrom(
+    this.user = await lastValueFrom(
       this.userSvc.getUserInfo(this.authSvc.getUserFromAccesToken())
     );
-    console.log(users);
   }
 }

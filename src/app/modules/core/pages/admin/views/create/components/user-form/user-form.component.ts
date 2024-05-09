@@ -11,11 +11,13 @@ import { lastValueFrom } from 'rxjs';
 import { PrimeNgModule } from '../../../../../../../ng-prime/prime-ng.module';
 import { AuthService } from '../../../../../../../auth/services/auth.service';
 import { CreateService } from '../../../../services/create.service';
+import { ZorroNgModule } from '../../../../../../../ng-zorro/zorro-ng.module';
+import { ToastService } from '../../../../../../../shared/services/toast/toast.service';
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [PrimeNgModule, ReactiveFormsModule, CommonModule],
+  imports: [PrimeNgModule, ReactiveFormsModule, CommonModule, ZorroNgModule],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.scss',
 })
@@ -26,6 +28,7 @@ export class UserFormComponent {
   public registerForm!: FormGroup;
   public actualDate: any = new Date().toISOString().split('T')[0];
   private authSvc = inject(AuthService);
+  private toastSvc = inject(ToastService);
   private createSvc = inject(CreateService);
   public userRoles: string = this.authSvc.getRolesFromAccesToken();
 
@@ -59,7 +62,7 @@ export class UserFormComponent {
     let res = await lastValueFrom(
       this.createSvc.createNewRegister(this.registerForm.value, 'user')
     );
-    console.log(res);
+    this.toastSvc.create('success', res.status, res.email);
 
     this.generateForm();
   }

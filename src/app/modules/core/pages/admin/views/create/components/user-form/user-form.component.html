@@ -251,9 +251,21 @@
               align-items: center;
               margin-left: 30%;
             "
-            *ngIf="registerForm.invalid"
           >
-            <strong>Complete form to submit :</strong>
+            <span
+              *ngIf="registerForm.invalid"
+              nz-icon
+              nzType="close-circle"
+              style="font-size: large"
+              nzTheme="outline"
+            ></span>
+            <span
+              *ngIf="!registerForm.invalid"
+              nz-icon
+              nzType="check-circle"
+              style="font-size: large"
+              nzTheme="outline"
+            ></span>
           </div>
           <button
             style="

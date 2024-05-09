@@ -7,11 +7,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { loadingInterceptor } from './modules/shared/interceptors/loading/loading.interceptor';
 import { tokenInterceptor } from './modules/shared/interceptors/token/token.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([tokenInterceptor, loadingInterceptor])),
+    MessageService,
   ],
 };

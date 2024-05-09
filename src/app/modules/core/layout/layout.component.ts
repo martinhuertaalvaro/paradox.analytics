@@ -33,6 +33,7 @@ export class LayoutComponent {
   public user: string = this.authSvc.getUserFromAccesToken().toUpperCase();
   public userRoles: string = this.authSvc.getRolesFromAccesToken();
   async ngOnInit() {
+    /* this.userInfo = await lastValueFrom(this.userSvc.getUserInfo(this.user)); */
     if (this.userRoles[0] == LayoutComponent.ADMINKEY) {
       this.hasAdminRole = true;
     }

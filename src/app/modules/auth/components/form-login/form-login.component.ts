@@ -5,7 +5,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ToastService } from '../../../shared/services/toast/toast.service';
 import { AuthService } from '../../services/auth.service';
 import { ILoginRequest } from '../../interfaces/i-login-requests';
 import { ITenantRequest } from '../../interfaces/i-tenant-request';
@@ -15,6 +14,8 @@ import { Router } from '@angular/router';
 import { ConfigService } from '../../../shared/services/config/config.service';
 import { CommonModule } from '@angular/common';
 import { PrimeNgModule } from '../../../ng-prime/prime-ng.module';
+import { MessageService } from 'primeng/api';
+import { ToastService } from '../../../shared/services/toast/toast.service';
 
 @Component({
   selector: 'app-form-login',
@@ -27,9 +28,9 @@ export class FormLoginComponent {
   constructor(private formBuilder: FormBuilder) {}
 
   private router = inject(Router);
-  private toastSvc = inject(ToastService);
   private authSvc = inject(AuthService);
   private configSvc = inject(ConfigService);
+  private toastSvc = inject(ToastService);
   protected loginForm!: FormGroup;
   public tenantExist: any = false;
 
@@ -59,12 +60,9 @@ export class FormLoginComponent {
             (this.tenantExist = true),
             localStorage.setItem('tenantId', res.id.toString()),
             localStorage.setItem('tenantCode', res.code))
-          : ((this.tenantExist = null), this.authSvc.deleteTenantId()) /* ,
-            this.toastSvc.create(
-              'Invalid Credentials',
-              'Tenant not found',
-              'danger'
-            ) */;
+          : ((this.tenantExist = null),
+            this.authSvc.deleteTenantId(),
+            this.toastSvc.create('error', 'Unauthorized', 'Invalid Client'));
       });
     } else if (this.tenantExist) {
       let request: ILoginRequest = this.loginForm.value as ILoginRequest;
@@ -77,16 +75,16 @@ export class FormLoginComponent {
               this.authSvc.saveToLocalStorageToken(token);
               this.router.navigate(['/core']);
             } else {
-              /* this.toastSvc.create(
-                'Invalid Credentials',
-                'Incorrect User or Password',
-                'danger'
-              ); */
+              this.toastSvc.create(
+                'error',
+                'Unauthorized',
+                'Invalid Credentials'
+              );
             }
           });
         },
         error: (err: any) => {
-          console.log(err);
+          this.toastSvc.create('error', err.statusText, err.error.message);
         },
       });
     }
