@@ -53,7 +53,6 @@ export class UserFormComponent {
         validator: this.passwordMatchValidator, // Agregar validador personalizado para comparar contraseñas
       } as AbstractControlOptions
     );
-    this.registerForm.get('role')?.disable;
   }
 
   async onSubmit() {
@@ -62,7 +61,7 @@ export class UserFormComponent {
     );
     console.log(res);
 
-    this.registerForm.reset();
+    this.generateForm();
   }
 
   protected passwordMatchValidator(formGroup: FormGroup) {
