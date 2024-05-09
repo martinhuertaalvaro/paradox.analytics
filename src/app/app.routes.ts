@@ -10,10 +10,10 @@ import { coreGuard } from './modules/shared/guards/core.guard';
 import { authGuard } from './modules/shared/guards/auth.guard';
 import { ManagementComponent } from './modules/core/pages/user/views/management/management.component';
 import { TeamsComponent } from './modules/core/pages/teams/teams.component';
-import { CreateComponent } from './modules/core/pages/create/create.component';
-import { UserFormComponent } from './modules/core/pages/create/components/user-form/user-form.component';
-import { DeviceFormComponent } from './modules/core/pages/create/components/device-form/device-form.component';
-import { TeamFormComponent } from './modules/core/pages/create/components/team-form/team-form.component';
+import { CreateComponent } from './modules/core/pages/admin/views/create/create.component';
+import { UserFormComponent } from './modules/core/pages/admin/views/create/components/user-form/user-form.component';
+import { DeviceFormComponent } from './modules/core/pages/admin/views/create/components/device-form/device-form.component';
+import { TeamFormComponent } from './modules/core/pages/admin/views/create/components/team-form/team-form.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },

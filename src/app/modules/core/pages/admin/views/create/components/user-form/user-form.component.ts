@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { PrimeNgModule } from '../../../../../ng-prime/prime-ng.module';
 import {
   AbstractControlOptions,
   FormBuilder,
@@ -8,9 +7,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../../../../auth/services/auth.service';
-import { CreateService } from '../../services/create.service';
 import { lastValueFrom } from 'rxjs';
+import { PrimeNgModule } from '../../../../../../../ng-prime/prime-ng.module';
+import { AuthService } from '../../../../../../../auth/services/auth.service';
+import { CreateService } from '../../../../services/create.service';
 
 @Component({
   selector: 'app-user-form',
