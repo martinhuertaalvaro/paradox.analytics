@@ -1,24 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { PrimeNgModule } from '../../../../../ng-prime/prime-ng.module';
 import {
+  AbstractControlOptions,
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../../../auth/services/auth.service';
+import { CreateService } from '../../services/create.service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [PrimeNgModule, ReactiveFormsModule],
+  imports: [PrimeNgModule, ReactiveFormsModule, CommonModule],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.scss',
 })
 export class UserFormComponent {
   constructor(private formBuilder: FormBuilder) {}
 
+  private static ADMINKEY = 'ROLE_ADMIN';
   public registerForm!: FormGroup;
   public actualDate: any = new Date().toISOString().split('T')[0];
+  private authSvc = inject(AuthService);
+  private createSvc = inject(CreateService);
+  public userRoles: string = this.authSvc.getRolesFromAccesToken();
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -27,27 +36,43 @@ export class UserFormComponent {
   }
 
   protected generateForm() {
-    this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      city: ['', Validators.required],
-      workfield: ['Support', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-      birthdate: ['', Validators.required],
-      dateOfRegister: [this.actualDate],
-    });
+    this.registerForm = this.formBuilder.group(
+      {
+        name: ['', Validators.required],
+        surname: ['', Validators.required],
+        city: ['', Validators.required],
+        role: ['', Validators.required],
+        workfield: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        confirmPassword: ['', Validators.required],
+        birthdate: ['', Validators.required],
+        dateOfRegister: [this.actualDate],
+      },
+      {
+        validator: this.passwordMatchValidator, // Agregar validador personalizado para comparar contraseñas
+      } as AbstractControlOptions
+    );
+    this.registerForm.get('role')?.disable;
   }
 
-  public checkForm() {
-    if (
-      this.registerForm.value.password !=
-      this.registerForm.value.confirmPassword
-    ) {
-      console.log('errorContraseña');
+  async onSubmit() {
+    let res = await lastValueFrom(
+      this.createSvc.createNewRegister(this.registerForm.value, 'user')
+    );
+    console.log(res);
+
+    this.registerForm.reset();
+  }
+
+  protected passwordMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+
+    if (password !== confirmPassword) {
+      formGroup.get('confirmPassword')?.setErrors({ passwordMismatch: true });
     } else {
-      console.log(this.registerForm.value);
+      formGroup.get('confirmPassword')?.setErrors(null);
     }
   }
 }

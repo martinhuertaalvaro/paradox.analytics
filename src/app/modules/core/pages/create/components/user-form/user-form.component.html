@@ -1,130 +1,270 @@
 <main style="height: 90%; display: flex; align-items: center">
   <div class="container mb-5">
-    <form [formGroup]="registerForm" (ngSubmit)="checkForm()">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <h2 class="mb-5">REGISTER NEW USER</h2>
       <div class="row">
         <div class="col-md-3 mb-5">
+          <label style="color: rgb(117, 116, 116)">Name</label>
           <input
             type="text"
             class="form-control"
-            id="campo1"
-            placeholder="Name"
+            placeholder="ex: Álvaro"
             formControlName="name"
             required
           />
+          <div
+            *ngIf="
+              registerForm.get('name')?.invalid &&
+              (registerForm.get('name')?.dirty ||
+                registerForm.get('name')?.touched)
+            "
+          >
+            <div
+              style="color: red"
+              *ngIf="registerForm.get('name')?.errors?.['required']"
+            >
+              Name is required
+            </div>
+          </div>
         </div>
         <div class="col-md-3 mb-5">
+          <label style="color: rgb(117, 116, 116)">Surname</label>
           <input
             type="text"
             class="form-control"
-            id="campo1"
-            placeholder="Surname"
+            placeholder="ex: Martín"
             formControlName="surname"
             required
           />
+          <div
+            *ngIf="
+              registerForm.get('surname')?.invalid &&
+              (registerForm.get('surname')?.dirty ||
+                registerForm.get('surname')?.touched)
+            "
+          >
+            <div
+              style="color: red"
+              *ngIf="registerForm.get('surname')?.errors?.['required']"
+            >
+              Surname is required
+            </div>
+          </div>
         </div>
-        <div class="col-md-4 mb-5">
+        <div class="col-md-2 mb-5">
+          <label style="color: rgb(117, 116, 116)">City</label>
           <input
             type="text"
             class="form-control"
-            id="campo1"
-            placeholder="City"
+            placeholder="ex: Valencia"
             formControlName="city"
             required
           />
+          <div
+            *ngIf="
+              registerForm.get('city')?.invalid &&
+              (registerForm.get('city')?.dirty ||
+                registerForm.get('city')?.touched)
+            "
+          >
+            <div
+              style="color: red"
+              *ngIf="registerForm.get('city')?.errors?.['required']"
+            >
+              City is required
+            </div>
+          </div>
         </div>
         <div class="col-md-2 mb-5">
-          <select
-            id="campo3"
-            formControlName="workfield"
-            name="campo3"
-            class="form-select"
-            required
+          <label style="color: rgb(117, 116, 116)">Role</label>
+          <select formControlName="role" class="form-select" required>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
+          <div
+            *ngIf="
+              registerForm.get('role')?.invalid &&
+              (registerForm.get('role')?.dirty ||
+                registerForm.get('role')?.touched)
+            "
           >
-            <option value="Support" disabled>Workfield</option>
+            <div
+              style="color: red"
+              *ngIf="registerForm.get('role')?.errors?.['required']"
+            >
+              Role is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-5">
+          <label style="color: rgb(117, 116, 116)">Workfield</label>
+          <select formControlName="workfield" class="form-select" required>
             <option value="Engineer">Engineer</option>
             <option value="Developer">Developer</option>
             <option value="Teacher">Teacher</option>
+            <option value="Support">Support</option>
           </select>
+          <div
+            *ngIf="
+              registerForm.get('workfield')?.invalid &&
+              (registerForm.get('workfield')?.dirty ||
+                registerForm.get('workfield')?.touched)
+            "
+          >
+            <div
+              style="color: red"
+              *ngIf="registerForm.get('workfield')?.errors?.['required']"
+            >
+              Workfield is required
+            </div>
+          </div>
         </div>
         <div class="col-md-6 mb-5">
+          <label style="color: rgb(117, 116, 116)">Email</label>
           <input
             type="email"
             class="form-control"
-            id="exampleFormControlInput1"
             placeholder="name@example.com"
             formControlName="email"
           />
+          <div
+            *ngIf="
+              registerForm.get('email')?.invalid &&
+              (registerForm.get('email')?.dirty ||
+                registerForm.get('email')?.touched)
+            "
+          >
+            <div
+              style="color: red"
+              *ngIf="registerForm.get('email')?.errors?.['required']"
+            >
+              El email es obligatorio
+            </div>
+            <div
+              style="color: red"
+              *ngIf="registerForm.get('email')?.errors?.['email']"
+            >
+              El formato no es correcto
+            </div>
+          </div>
         </div>
         <div class="col-md-3 mb-5">
+          <label style="color: rgb(117, 116, 116)">Password</label>
           <input
-            type="text"
+            type="password"
             class="form-control"
-            id="campo1"
-            placeholder="Password"
+            placeholder="min. 8 characters"
             formControlName="password"
             required
           />
+          <div
+            *ngIf="
+              registerForm.get('password')?.invalid &&
+              (registerForm.get('password')?.dirty ||
+                registerForm.get('password')?.touched)
+            "
+          >
+            <div
+              *ngIf="registerForm.get('password')?.errors?.['required']"
+              style="color: red"
+            >
+              La contraseña es obligatoria
+            </div>
+            <div
+              *ngIf="registerForm.get('password')?.errors?.['minlength']"
+              style="color: red"
+            >
+              La contraseña debe tener al menos 8 caracteres
+            </div>
+          </div>
         </div>
         <div class="col-md-3 mb-5">
+          <label style="color: rgb(117, 116, 116)">Confirm Password</label>
           <input
-            type="text"
+            type="password"
             class="form-control"
-            id="campo1"
             placeholder="Confirm Password"
             formControlName="confirmPassword"
             required
           />
-        </div>
-        <!-- <div class="col-md-6 mb-5">
-          <label for="campo3">Modulos 2 DAW</label>
-          <select id="campo3" name="campo3" class="form-select">
-            <option value="volvo" selected>Elige Modulo</option>
-            <option value="saab">Saab</option>
-            <option value="fiat">Fiat</option>
-            <option value="audi">Audi</option>
-          </select>
-        </div> -->
-
-        <div class="col-md-3 mb-5">
-          <label
-            for="formFile"
-            class="form-label"
-            style="color: var(--sidebar-background-color)"
-            >Birthdate</label
+          <div
+            *ngIf="
+              registerForm.get('confirmPassword')?.invalid &&
+              (registerForm.get('confirmPassword')?.dirty ||
+                registerForm.get('confirmPassword')?.touched)
+            "
           >
+            <div
+              style="color: red"
+              *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
+            >
+              La confirmación de contraseña es obligatoria
+            </div>
+            <div
+              style="color: red"
+              *ngIf="registerForm.get('confirmPassword')?.errors?.['passwordMismatch']"
+            >
+              Las contraseñas no coinciden
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <label style="color: rgb(117, 116, 116)"> Birthdate </label>
           <input
             type="date"
             class="form-control"
             name="birthdate"
-            id="birthdate"
             formControlName="birthdate"
           />
+          <div
+            *ngIf="
+              registerForm.get('birthdate')?.invalid &&
+              (registerForm.get('birthdate')?.dirty ||
+                registerForm.get('birthdate')?.touched)
+            "
+          >
+            <div
+              style="color: red"
+              *ngIf="registerForm.get('birthdate')?.errors?.['required']"
+            >
+              La fecha de nacimiento es obligatoria
+            </div>
+          </div>
         </div>
         <div class="col-md-3 mb-5">
-          <label
-            for="formFile"
-            class="form-label"
-            style="color: var(--sidebar-background-color)"
-            >Date of Register</label
-          >
+          <label style="color: rgb(117, 116, 116)"> Date of Register </label>
           <input
             type="date"
             class="form-control"
             name="birthdate"
-            id="birthdate"
             [value]="actualDate"
             disabled
           />
         </div>
         <div class="row" style="justify-content: right">
           <button
-            style="width: fit-content"
+            style="
+              width: fit-content;
+              background-color: var(--sidebar-background-color);
+              border: none;
+            "
             class="btn btn-primary"
             type="submit"
+            [disabled]="registerForm.invalid"
           >
             Register User
           </button>
+          <div
+            style="
+              color: rgb(117, 116, 116);
+              display: flex;
+              justify-content: right;
+              margin-right: 2px;
+            "
+            *ngIf="registerForm.invalid"
+          >
+            Invalid form.
+          </div>
         </div>
       </div>
     </form>
