@@ -117,17 +117,27 @@ export const routes: Routes = [
               customBreadcrumb: 'Create',
             },
             children: [
+              { path: '', redirectTo: 'user', pathMatch: 'full' },
               {
                 path: 'user',
                 component: UserFormComponent,
+                data: {
+                  customBreadcrumb: 'User',
+                },
               },
               {
                 path: 'device',
                 component: DeviceFormComponent,
+                data: {
+                  customBreadcrumb: 'Device',
+                },
               },
               {
                 path: 'team',
                 component: TeamFormComponent,
+                data: {
+                  customBreadcrumb: 'Team',
+                },
               },
             ],
           },

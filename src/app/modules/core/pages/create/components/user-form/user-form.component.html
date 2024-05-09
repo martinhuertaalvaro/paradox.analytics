@@ -242,6 +242,19 @@
           />
         </div>
         <div class="row" style="justify-content: right">
+          <div
+            style="
+              color: rgb(117, 116, 116);
+              display: flex;
+              justify-content: right;
+              width: fit-content;
+              align-items: center;
+              margin-left: 30%;
+            "
+            *ngIf="registerForm.invalid"
+          >
+            <strong>Complete form to submit :</strong>
+          </div>
           <button
             style="
               width: fit-content;
@@ -254,17 +267,6 @@
           >
             Register User
           </button>
-          <div
-            style="
-              color: rgb(117, 116, 116);
-              display: flex;
-              justify-content: right;
-              margin-right: 2px;
-            "
-            *ngIf="registerForm.invalid"
-          >
-            Invalid form.
-          </div>
         </div>
       </div>
     </form>
