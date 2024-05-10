@@ -59,6 +59,9 @@ button {
 .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected,
 .ant-menu.ant-menu-dark .ant-menu-item-selected {
   background-color: var(--sidebar-item-selected-color);
+  border-radius: var(--border-radius);
+  margin: 5px 5px 5px 5px;
+  transition: all 0.3s ease-in-out;
 }
 
 .ant-menu-dark .ant-menu-inline.ant-menu-sub {
@@ -119,4 +122,22 @@ button {
     box-shadow: var(--box-shadow);
     border-color: var(--sidebar-background-color);
   }
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover,
+.ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow,
+.ant-menu-submenu:hover
+  > .ant-menu-submenu-title
+  > .ant-menu-submenu-expand-icon,
+.ant-menu-vertical .ant-menu-submenu-selected,
+.ant-menu-vertical-left .ant-menu-submenu-selected,
+.ant-menu-vertical-right .ant-menu-submenu-selected {
+  color: #fff;
 }

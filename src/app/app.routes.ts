@@ -8,7 +8,7 @@ import { AnalyticsComponent } from './modules/core/pages/analytics/analytics.com
 import { DevicesComponent } from './modules/core/pages/devices/devices.component';
 import { coreGuard } from './modules/shared/guards/core.guard';
 import { authGuard } from './modules/shared/guards/auth.guard';
-import { ManagementComponent } from './modules/core/pages/user/views/management/management.component';
+import { ManagementComponent } from './modules/core/pages/admin/views/management/management.component';
 import { TeamsComponent } from './modules/core/pages/teams/teams.component';
 import { CreateComponent } from './modules/core/pages/admin/views/create/create.component';
 import { UserFormComponent } from './modules/core/pages/admin/views/create/components/user-form/user-form.component';

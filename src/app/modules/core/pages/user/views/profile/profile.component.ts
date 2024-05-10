@@ -3,11 +3,13 @@ import { UserService } from '../../services/user.service';
 import { lastValueFrom } from 'rxjs';
 import { AuthService } from '../../../../../auth/services/auth.service';
 import { User } from '../../interfaces/user';
+import { ZorroNgModule } from '../../../../../ng-zorro/zorro-ng.module';
+import { PrimeNgModule } from '../../../../../ng-prime/prime-ng.module';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [ZorroNgModule, PrimeNgModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
