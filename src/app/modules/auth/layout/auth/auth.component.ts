@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormLoginComponent } from '../../components/form-login/form-login.component';
 import { PrimeNgModule } from '../../../ng-prime/prime-ng.module';
+import { AuthService } from '../../services/auth.service';
+import { ConfigService } from '../../../shared/services/config/config.service';
 
 @Component({
   selector: 'app-auth',
@@ -12,9 +14,13 @@ import { PrimeNgModule } from '../../../ng-prime/prime-ng.module';
 })
 export class AuthComponent {
   constructor() {}
+
+  private configSvc = inject(ConfigService);
   public showForm: boolean = false;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.configSvc.globalConfig(true, 'paradox');
+  }
 
   public onShowForm() {
     this.showForm = true;

@@ -5,10 +5,9 @@ import { BaseService } from '../base.service';
   providedIn: 'root',
 })
 export class LogoutService extends BaseService {
-  public logout() {
+  async logout() {
     localStorage.removeItem('tenantId');
     localStorage.removeItem('tenantCode');
-    location.reload();
     localStorage.removeItem('access_token');
     this.router.navigate(['/auth']);
   }

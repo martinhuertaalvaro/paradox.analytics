@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { PrimeNgModule } from '../../../ng-prime/prime-ng.module';
 import { MessageService } from 'primeng/api';
 import { ToastService } from '../../../shared/services/toast/toast.service';
+import { LoadingService } from '../../../shared/services/loading/loading.service';
 
 @Component({
   selector: 'app-form-login',
@@ -27,6 +28,7 @@ import { ToastService } from '../../../shared/services/toast/toast.service';
 export class FormLoginComponent {
   constructor(private formBuilder: FormBuilder) {}
 
+  private loadingSvc = inject(LoadingService);
   private router = inject(Router);
   private authSvc = inject(AuthService);
   private configSvc = inject(ConfigService);
@@ -59,7 +61,8 @@ export class FormLoginComponent {
           ? (this.configSvc.globalConfig(true, res.code),
             (this.tenantExist = true),
             localStorage.setItem('tenantId', res.id.toString()),
-            localStorage.setItem('tenantCode', res.code))
+            localStorage.setItem('tenantCode', res.code),
+            this.toastSvc.create('success', res.name, 'Authenticate to acces'))
           : ((this.tenantExist = null),
             this.authSvc.deleteTenantId(),
             this.toastSvc.create('error', 'Unauthorized', 'Invalid Client'));
@@ -74,6 +77,11 @@ export class FormLoginComponent {
             if (res === true) {
               this.authSvc.saveToLocalStorageToken(token);
               this.router.navigate(['/core']);
+              this.toastSvc.create(
+                'success',
+                request.username,
+                'Nice to see you'
+              );
             } else {
               this.toastSvc.create(
                 'error',
