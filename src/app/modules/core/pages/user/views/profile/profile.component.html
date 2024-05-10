@@ -11,7 +11,7 @@
         style="border-radius: var(--border-radius)"
       ></nz-avatar>
     </div>
-    <div class="col-md-8" style="margin-top: 3%; margin-left: 2%">
+    <div class="col-md-7" style="margin-top: 3%; margin-left: 2%">
       <div class="row">
         <div class="col-md-12">
           <strong
@@ -24,18 +24,23 @@
             >
               {{ user.name + " " + user.surname }}
             </h2></strong
-          ><q>{{ user.email }}</q>
+          >
+        </div>
+        <div class="col-md-12" style="display: flex; align-items: center">
+          <i nz-icon nzType="mail" style="font-size: medium"></i>
+          <q style="margin-left: 1%">{{ user.email }} </q>
         </div>
       </div>
+      <hr />
       <div class="row mt-4">
-        <div class="col-md-2">
+        <div class="col">
           <p style="color: rgb(160, 156, 156); margin-bottom: 1px">Workfield</p>
           <h5 class="m-0" style="color: var(--text-color); margin-top: 0">
             {{ user.workfield }}
           </h5>
         </div>
 
-        <div class="col-md-2">
+        <div class="col">
           <p style="color: rgb(160, 156, 156); margin-bottom: 1px">
             Register Date
           </p>
@@ -43,19 +48,19 @@
             {{ user.registerdate }}
           </h5>
         </div>
-        <div class="col-md-2">
+        <div class="col">
           <p style="color: rgb(160, 156, 156); margin-bottom: 1px">City</p>
           <h5 class="m-0" style="color: var(--text-color); margin-top: 0">
             {{ user.city }}
           </h5>
         </div>
-        <div class="col-md-2">
+        <div class="col">
           <p style="color: rgb(160, 156, 156); margin-bottom: 1px">Birthdate</p>
           <h5 class="m-0" style="color: var(--text-color); margin-top: 0">
             {{ user.birthdate }}
           </h5>
         </div>
-        <div class="col-md-2">
+        <div class="col">
           <p style="color: rgb(160, 156, 156); margin-bottom: 1px">Role</p>
           <h5 class="m-0" style="color: var(--text-color); margin-top: 0">
             {{ user.roles?.[0]?.split('_')?.[1] }}
