@@ -111,8 +111,32 @@
         [nzRouteLabel]="'customBreadcrumb'"
         style="width: 100%; font-weight: bold"
       ></nz-breadcrumb>
-      <div style="margin-right: 1%">
-        <a [routerLink]="['user', 'profile']" style="color: gray">{{ user }}</a>
+      <div
+        style="
+          margin-right: 2%;
+          background-color: var(--sidebar-background-color);
+          height: 50%;
+          border-radius: var(--border-radius);
+          width: 10%;
+        "
+      >
+        <a
+          [routerLink]="['user', 'profile']"
+          style="
+            color: gray;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+          "
+          ><i
+            style="font-size: large; display: flex; align-items: center"
+            nz-icon
+            nzType="user"
+            nzTheme="outline"
+          ></i
+          >{{ user.split("@")[0] }}</a
+        >
       </div>
       <div style="margin-right: 2%; display: flex">
         <i
