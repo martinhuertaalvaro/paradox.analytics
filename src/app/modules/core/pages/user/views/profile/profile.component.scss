@@ -6,3 +6,11 @@
   background-color: var(--sidebar-background-color);
   border-radius: var(--border-radius);
 }
+
+.logo {
+  content: var(--PARADOX-navbar-collapsed);
+}
+
+p-terminal {
+  width: 90%;
+}

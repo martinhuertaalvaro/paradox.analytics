@@ -8,6 +8,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { FieldsetModule } from 'primeng/fieldset';
 import { CardModule } from 'primeng/card';
+import { TerminalModule } from 'primeng/terminal';
 
 /**
  * SharedModule should have anything but services and be imported in all modules that need the shared stuff (which could also be the AppModule).
@@ -23,6 +24,7 @@ const COMPONENTS = [
   InputGroupAddonModule,
   FieldsetModule,
   CardModule,
+  TerminalModule,
 ];
 @NgModule({
   imports: [...COMPONENTS],

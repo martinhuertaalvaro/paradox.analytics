@@ -14,4 +14,5 @@ export interface User {
   active?: boolean;
   birthdate?: string;
   registerdate?: string;
+  friends?: Array<number>;
 }

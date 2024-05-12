@@ -8,6 +8,7 @@ import { loadingInterceptor } from './modules/shared/interceptors/loading/loadin
 import { tokenInterceptor } from './modules/shared/interceptors/token/token.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { TerminalService } from 'primeng/terminal';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,5 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([tokenInterceptor, loadingInterceptor])),
     MessageService,
+    TerminalService,
   ],
 };

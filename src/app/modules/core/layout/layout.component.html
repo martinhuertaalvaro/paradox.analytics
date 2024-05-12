@@ -13,7 +13,7 @@
     </div>
     <br />
     <ul nz-menu nzTheme="dark" nzMode="inline" class="nz-menu">
-      <li class="navbarItem" nz-menu-item [routerLink]="['main']">
+      <li class="navbarItem" nz-menu-item nzMatchRouter [routerLink]="['main']">
         <a style="display: flex; align-items: center" [routerLink]="['main']">
           <i nz-icon nzType="home" nzTheme="outline"></i>
           <span>Home</span>
@@ -23,6 +23,7 @@
         *ngIf="userInfo.devices?.length! >= 1"
         class="navbarItem"
         nz-menu-item
+        nzMatchRouter
         [routerLink]="['analytics']"
       >
         <a
@@ -44,6 +45,7 @@
           <li
             *ngFor="let deviceName of userInfo.devices"
             nz-menu-item
+            nzMatchRouter
             [routerLink]="['devices', deviceName]"
           >
             {{ deviceName }}
@@ -61,6 +63,7 @@
           <li
             *ngFor="let teamName of userInfo.teams"
             nz-menu-item
+            nzMatchRouter
             [routerLink]="['teams', teamName]"
           >
             {{ teamName }}
@@ -75,19 +78,39 @@
         nzIcon="safety"
       >
         <ul>
-          <li nz-menu-item [routerLink]="['admin', 'management']">
+          <li nz-menu-item nzMatchRouter [routerLink]="['admin', 'management']">
             Management
           </li>
-          <li nz-menu-item [routerLink]="['admin', 'create']">Create</li>
+          <li nz-menu-item nzMatchRouter [routerLink]="['admin', 'create']">
+            Create
+          </li>
         </ul>
       </li>
-      <li class="navbarItem" nz-submenu nzTitle="You" nzIcon="user">
+      <li class="navbarItem" nz-submenu nzTitle="Members" nzIcon="team">
         <ul>
-          <li nz-menu-item [routerLink]="['user', 'friends']">Friends</li>
-          <li nz-menu-item [routerLink]="['user', 'profile']">My Profile</li>
+          <li
+            *ngIf="userInfo.friends?.length! > 0"
+            nz-menu-item
+            nzMatchRouter
+            [routerLink]="['members', 'friends']"
+          >
+            Friends
+          </li>
+          <li
+            nz-menu-item
+            nzMatchRouter
+            [routerLink]="['members', 'everybody']"
+          >
+            Everybody
+          </li>
         </ul>
       </li>
-      <li class="navbarItem" nz-menu-item [routerLink]="['settings']">
+      <li
+        class="navbarItem"
+        nz-menu-item
+        nzMatchRouter
+        [routerLink]="['settings']"
+      >
         <a
           style="display: flex; align-items: center"
           [routerLink]="['settings']"
@@ -123,7 +146,7 @@
         <a
           [routerLink]="['user', 'profile']"
           style="
-            color: gray;
+            color: rgb(197, 193, 193);
             display: flex;
             height: 100%;
             align-items: center;

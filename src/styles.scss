@@ -141,3 +141,17 @@ button {
 .ant-menu-vertical-right .ant-menu-submenu-selected {
   color: #fff;
 }
+
+.ant-menu.ant-menu-vertical.ant-menu-sub {
+  border-radius: var(--border-radius);
+}
+
+.p-terminal.p-component {
+  border-radius: var(--border-radius);
+}
+
+.p-terminal-content-prompt,
+.p-terminal-prompt {
+  font-weight: 700;
+  margin-right: 1%;
+}
