@@ -123,9 +123,6 @@
     <strong>Email: </strong>{{ userForModal.email }}
   </p>
   <p class="p-text-secondary block mb-2">
-    <strong>Birthdate: </strong>{{ userForModal.birthdate }}
-  </p>
-  <p class="p-text-secondary block mb-2">
     <strong>Role: </strong>{{ userForModal.roles[0].split("_")[1] }}
   </p>
   <p class="p-text-secondary block mb-2">
@@ -135,9 +132,28 @@
     <strong>Register Date: </strong>{{ userForModal.registerdate }}
   </p>
   <p class="p-text-secondary block mb-2">
+    <strong>Birthdate: </strong>{{ userForModal.birthdate }}
+  </p>
+  <p class="p-text-secondary block mb-2">
     <strong>City: </strong>{{ userForModal.city }}
   </p>
   <p class="p-text-secondary block mb-2">
     <strong>Friends: </strong>{{ areFriends(userForModal.id) }}
+  </p>
+  <p style="display: flex; justify-content: right">
+    <a
+      ><i
+        class="pi pi-heart"
+        style="margin-right: 1%"
+        *ngIf="!areFriends(userForModal.id)"
+        (click)="makeFriend(userForModal.id); visible = false"
+      ></i>
+      <i
+        class="pi pi-heart-fill"
+        style="margin-right: 1%"
+        *ngIf="areFriends(userForModal.id)"
+        (click)="deleteFriend(userForModal.id); visible = false"
+      ></i
+    ></a>
   </p>
 </p-dialog>

@@ -55,6 +55,7 @@ body {
 input,
 select,
 button {
+  border: none;
   border-radius: var(--border-radius) !important;
   &:focus {
     box-shadow: var(--box-shadow);
