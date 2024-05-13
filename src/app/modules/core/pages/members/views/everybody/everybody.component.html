@@ -1,0 +1,104 @@
+<div
+  style="
+    border-radius: var(--border-radius);
+    background-color: white;
+    height: 100%;
+  "
+>
+  <div style="padding: 5px">
+    <p-table
+      #dt1
+      [value]="users"
+      [styleClass]="'p-datatable-sm p-datatable-striped'"
+      [globalFilterFields]="[
+        'email',
+        'name',
+        'workfield',
+        'registerdate',
+        'active',
+        'city'
+      ]"
+      [(selection)]="selectedUsers"
+      dataKey="id"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rows]="13"
+      [scrollable]="true"
+      scrollHeight="700px"
+    >
+      <ng-template pTemplate="caption">
+        <p-iconField iconPosition="left">
+          <p-inputIcon>
+            <i
+              class="pi pi-search"
+              style="display: flex; align-items: center"
+            ></i>
+          </p-inputIcon>
+          <input
+            pInputText
+            type="text"
+            (input)="filterGLobal($event)"
+            placeholder="Search..."
+          />
+        </p-iconField>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="email">
+            Username
+            <p-sortIcon field="email"
+              ><i
+                class="pi pi-search"
+                style="display: flex; align-items: center"
+              ></i
+            ></p-sortIcon>
+          </th>
+          <th pSortableColumn="name">Name <p-sortIcon field="name" /></th>
+          <th pSortableColumn="workfield">
+            Workfield <p-sortIcon field="workfield" />
+          </th>
+          <th pSortableColumn="registerdate">
+            Register Date <p-sortIcon field="registerdate" />
+          </th>
+          <th pSortableColumn="city">City <p-sortIcon field="city" /></th>
+          <th pSortableColumn="active" style="width: 10%">
+            Active <p-sortIcon field="active" />
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr [pSelectableRow]="user">
+          <td>
+            <span class="p-column-title">Username</span>
+            {{ user.email.split("@")[0] }}
+          </td>
+          <td>
+            <span class="p-column-title">Name</span>
+            {{ user.name + " " + user.surname }}
+          </td>
+          <td>
+            <span class="p-column-title">Workfield</span>
+            {{ user.workfield }}
+          </td>
+          <td>
+            <span class="p-column-title">Register Date</span>
+            <p-tag [value]="user.registerdate" />
+          </td>
+          <td>
+            <span class="p-column-title">City</span>
+            {{ user.city }}
+          </td>
+          <td>
+            <span class="p-column-title">Active</span>
+            <p-tag [value]="user.active" />
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4">No users found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

@@ -103,7 +103,9 @@
       class="col-md"
       style="box-shadow: var(--box-shadow); border-radius: var(--border-radius)"
     >
-      <h4>LAST MESSAGES</h4>
+      <p-card header="Last Messages">
+        <nz-empty [nzNotFoundContent]="'No messages found'"></nz-empty>
+      </p-card>
     </div>
   </div>
 </main>

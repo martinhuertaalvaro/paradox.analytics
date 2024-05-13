@@ -14,6 +14,8 @@ import { CreateComponent } from './modules/core/pages/admin/views/create/create.
 import { UserFormComponent } from './modules/core/pages/admin/views/create/components/user-form/user-form.component';
 import { DeviceFormComponent } from './modules/core/pages/admin/views/create/components/device-form/device-form.component';
 import { TeamFormComponent } from './modules/core/pages/admin/views/create/components/team-form/team-form.component';
+import { EverybodyComponent } from './modules/core/pages/members/views/everybody/everybody.component';
+import { FriendsComponent } from './modules/core/pages/members/views/friends/friends.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -43,6 +45,30 @@ export const routes: Routes = [
             component: ProfileComponent,
             data: {
               customBreadcrumb: 'My Profile',
+            },
+          },
+        ],
+      },
+
+      {
+        path: 'members',
+        data: {
+          customBreadcrumb: 'Members',
+        },
+        children: [
+          { path: '', redirectTo: 'everybody', pathMatch: 'full' },
+          {
+            path: 'everybody',
+            component: EverybodyComponent,
+            data: {
+              customBreadcrumb: 'Everybody',
+            },
+          },
+          {
+            path: 'friends',
+            component: FriendsComponent,
+            data: {
+              customBreadcrumb: 'Friends',
             },
           },
         ],

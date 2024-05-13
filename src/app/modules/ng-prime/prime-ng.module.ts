@@ -9,6 +9,12 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { FieldsetModule } from 'primeng/fieldset';
 import { CardModule } from 'primeng/card';
 import { TerminalModule } from 'primeng/terminal';
+import { TagModule } from 'primeng/tag';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 
 /**
  * SharedModule should have anything but services and be imported in all modules that need the shared stuff (which could also be the AppModule).
@@ -25,6 +31,15 @@ const COMPONENTS = [
   FieldsetModule,
   CardModule,
   TerminalModule,
+  TableModule,
+  InputTextModule,
+  TagModule,
+  DropdownModule,
+  MultiSelectModule,
+  ProgressBarModule,
+  ButtonModule,
+  IconFieldModule,
+  InputIconModule,
 ];
 @NgModule({
   imports: [...COMPONENTS],

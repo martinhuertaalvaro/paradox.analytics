@@ -14,3 +14,9 @@
 p-terminal {
   width: 90%;
 }
+
+::ng-deep .p-card {
+  box-shadow: none;
+  background-color: var(--background-main-color);
+  height: 100%;
+}
