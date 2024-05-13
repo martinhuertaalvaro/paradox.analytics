@@ -8,6 +8,6 @@ import { User } from '../../user/interfaces/user';
 })
 export class EverybodyService extends BaseService {
   getAllMembers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrlMaestros}/user/members`);
+    return this.http.get<User[]>(`${this.baseUrlMaestros}/members/all`);
   }
 }

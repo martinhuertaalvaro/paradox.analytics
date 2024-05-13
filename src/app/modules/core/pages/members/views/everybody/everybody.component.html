@@ -15,7 +15,6 @@
         'name',
         'workfield',
         'registerdate',
-        'active',
         'city'
       ]"
       [(selection)]="selectedUsers"
@@ -60,9 +59,7 @@
             Register Date <p-sortIcon field="registerdate" />
           </th>
           <th pSortableColumn="city">City <p-sortIcon field="city" /></th>
-          <th pSortableColumn="active" style="width: 10%">
-            Active <p-sortIcon field="active" />
-          </th>
+          <th style="width: 5%"></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-user>
@@ -81,15 +78,15 @@
           </td>
           <td>
             <span class="p-column-title">Register Date</span>
-            <p-tag [value]="user.registerdate" />
+            {{ user.registerdate }}
           </td>
           <td>
             <span class="p-column-title">City</span>
             {{ user.city }}
           </td>
           <td>
-            <span class="p-column-title">Active</span>
-            <p-tag [value]="user.active" />
+            <span class="p-column-title">Info</span>
+            <i class="pi pi-info-circle" (click)="showDialog(user)"></i>
           </td>
         </tr>
       </ng-template>
@@ -102,3 +99,45 @@
     </p-table>
   </div>
 </div>
+<p-dialog
+  *ngIf="userForModal"
+  header="Header"
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '25rem' }"
+>
+  <ng-template pTemplate="header">
+    <div class="inline-flex align-items-center justify-content-center">
+      <p-avatar icon="pi pi-user" />
+      <span class="font-bold white-space-nowrap">
+        <strong>{{
+          "  " + userForModal.name + " " + userForModal.surname | uppercase
+        }}</strong>
+      </span>
+    </div>
+  </ng-template>
+  <p class="p-text-secondary block mb-2">
+    <strong>Username: </strong>{{ userForModal.email.split("@")[0] }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Email: </strong>{{ userForModal.email }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Birthdate: </strong>{{ userForModal.birthdate }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Role: </strong>{{ userForModal.roles[0].split("_")[1] }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Workfield: </strong>{{ userForModal.workfield }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Register Date: </strong>{{ userForModal.registerdate }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>City: </strong>{{ userForModal.city }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Friends: </strong>{{ areFriends(userForModal.id) }}
+  </p>
+</p-dialog>

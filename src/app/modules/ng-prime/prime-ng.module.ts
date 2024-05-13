@@ -15,6 +15,9 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
+import { DialogModule } from 'primeng/dialog';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 /**
  * SharedModule should have anything but services and be imported in all modules that need the shared stuff (which could also be the AppModule).
@@ -40,6 +43,9 @@ const COMPONENTS = [
   ButtonModule,
   IconFieldModule,
   InputIconModule,
+  DialogModule,
+  AvatarModule,
+  AvatarGroupModule,
 ];
 @NgModule({
   imports: [...COMPONENTS],
