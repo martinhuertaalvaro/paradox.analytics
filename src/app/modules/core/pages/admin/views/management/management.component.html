@@ -12,7 +12,6 @@
       [styleClass]="'p-datatable-sm p-datatable-striped'"
       [globalFilterFields]="[
         'email',
-        'name',
         'workfield',
         'registerdate',
         'city',
@@ -47,7 +46,7 @@
       <ng-template pTemplate="header">
         <tr>
           <th pSortableColumn="email">
-            Username
+            Email
             <p-sortIcon field="email"
               ><i
                 class="pi pi-search"
@@ -55,14 +54,18 @@
               ></i
             ></p-sortIcon>
           </th>
-          <th pSortableColumn="name">Name <p-sortIcon field="name" /></th>
           <th pSortableColumn="workfield">
             Workfield <p-sortIcon field="workfield" />
           </th>
+          <th pSortableColumn="role">Role <p-sortIcon field="role" /></th>
           <th pSortableColumn="registerdate">
             Register Date <p-sortIcon field="registerdate" />
           </th>
-          <th pSortableColumn="role">Role <p-sortIcon field="role" /></th>
+          <th pSortableColumn="teams">Teams <p-sortIcon field="teams" /></th>
+          <th pSortableColumn="devices">
+            Devices <p-sortIcon field="devices" />
+          </th>
+
           <th pSortableColumn="active">Active <p-sortIcon field="active" /></th>
           <th style="width: 10%"></th>
         </tr>
@@ -70,25 +73,30 @@
       <ng-template pTemplate="body" let-user>
         <tr [pSelectableRow]="user">
           <td>
-            <span class="p-column-title">Username</span>
-            {{ user.email.split("@")[0] }}
-          </td>
-          <td>
-            <span class="p-column-title">Name</span>
-            {{ user.name + " " + user.surname }}
+            <span class="p-column-title">Email</span>
+            {{ user.email }}
           </td>
           <td>
             <span class="p-column-title">Workfield</span>
             {{ user.workfield }}
           </td>
           <td>
+            <span class="p-column-title">Role</span>
+            {{ user.roles[0].split("_")[1] }}
+          </td>
+          <td>
             <span class="p-column-title">Register Date</span>
             {{ user.registerdate }}
           </td>
           <td>
-            <span class="p-column-title">Role</span>
-            {{ user.roles[0].split("_")[1] }}
+            <span class="p-column-title">Teams</span>
+            {{ user.teams.length }}
           </td>
+          <td>
+            <span class="p-column-title">Devices</span>
+            {{ user.devices.length }}
+          </td>
+
           <td>
             <span class="p-column-title">Active</span>
             <i

@@ -14,8 +14,9 @@
         'email',
         'name',
         'workfield',
-        'registerdate',
-        'city'
+        'birthdate',
+        'city',
+        'surname'
       ]"
       [(selection)]="selectedUsers"
       dataKey="id"
@@ -54,11 +55,14 @@
             ></p-sortIcon>
           </th>
           <th pSortableColumn="name">Name <p-sortIcon field="name" /></th>
+          <th pSortableColumn="surname">
+            Surname <p-sortIcon field="surname" />
+          </th>
           <th pSortableColumn="workfield">
             Workfield <p-sortIcon field="workfield" />
           </th>
-          <th pSortableColumn="registerdate">
-            Register Date <p-sortIcon field="registerdate" />
+          <th pSortableColumn="birthdate">
+            Birthdate <p-sortIcon field="birthdate" />
           </th>
           <th pSortableColumn="city">City <p-sortIcon field="city" /></th>
           <th style="width: 5%"></th>
@@ -72,15 +76,19 @@
           </td>
           <td>
             <span class="p-column-title">Name</span>
-            {{ user.name + " " + user.surname }}
+            {{ user.name }}
+          </td>
+          <td>
+            <span class="p-column-title">Surname</span>
+            {{ user.surname }}
           </td>
           <td>
             <span class="p-column-title">Workfield</span>
             {{ user.workfield }}
           </td>
           <td>
-            <span class="p-column-title">Register Date</span>
-            {{ user.registerdate }}
+            <span class="p-column-title">Birthdate</span>
+            {{ user.birthdate }}
           </td>
           <td>
             <span class="p-column-title">City</span>
@@ -89,7 +97,7 @@
           <td>
             <span class="p-column-title">Info</span>
             <i
-              class="pi pi-info-circle"
+              class="pi pi-eye"
               style="font-size: 1.3rem"
               (click)="showDialog(user)"
             ></i>
