@@ -1,1 +1,138 @@
-<p>management works!</p>
+<div
+  style="
+    border-radius: var(--border-radius);
+    background-color: white;
+    height: 100%;
+  "
+>
+  <div style="padding: 5px">
+    <p-table
+      #dt1
+      [value]="users"
+      [styleClass]="'p-datatable-sm p-datatable-striped'"
+      [globalFilterFields]="[
+        'email',
+        'name',
+        'workfield',
+        'registerdate',
+        'city',
+        'active',
+        'role'
+      ]"
+      [(selection)]="selectedUsers"
+      dataKey="id"
+      [tableStyle]="{
+        'min-width': '50rem'
+      }"
+      [rows]="13"
+      [scrollable]="true"
+      scrollHeight="700px"
+    >
+      <ng-template pTemplate="caption">
+        <p-iconField iconPosition="left">
+          <p-inputIcon>
+            <i
+              class="pi pi-search"
+              style="display: flex; align-items: center"
+            ></i>
+          </p-inputIcon>
+          <input
+            pInputText
+            type="text"
+            (input)="filterGLobal($event)"
+            placeholder="Search..."
+          />
+        </p-iconField>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="email">
+            Username
+            <p-sortIcon field="email"
+              ><i
+                class="pi pi-search"
+                style="display: flex; align-items: center"
+              ></i
+            ></p-sortIcon>
+          </th>
+          <th pSortableColumn="name">Name <p-sortIcon field="name" /></th>
+          <th pSortableColumn="workfield">
+            Workfield <p-sortIcon field="workfield" />
+          </th>
+          <th pSortableColumn="registerdate">
+            Register Date <p-sortIcon field="registerdate" />
+          </th>
+          <th pSortableColumn="role">Role <p-sortIcon field="role" /></th>
+          <th pSortableColumn="active">Active <p-sortIcon field="active" /></th>
+          <th style="width: 10%"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr [pSelectableRow]="user">
+          <td>
+            <span class="p-column-title">Username</span>
+            {{ user.email.split("@")[0] }}
+          </td>
+          <td>
+            <span class="p-column-title">Name</span>
+            {{ user.name + " " + user.surname }}
+          </td>
+          <td>
+            <span class="p-column-title">Workfield</span>
+            {{ user.workfield }}
+          </td>
+          <td>
+            <span class="p-column-title">Register Date</span>
+            {{ user.registerdate }}
+          </td>
+          <td>
+            <span class="p-column-title">Role</span>
+            {{ user.roles[0].split("_")[1] }}
+          </td>
+          <td>
+            <span class="p-column-title">Active</span>
+            <i
+              (click)="editActivity(user.id)"
+              class="pi pi-circle-fill"
+              [ngStyle]="{ color: user.active ? 'rgb(34, 241, 34)' : 'red' }"
+              style="font-size: 1.3rem"
+            ></i>
+          </td>
+          <td>
+            <span class="p-column-title">Info</span>
+            <i
+              class="pi pi-info-circle"
+              style="font-size: 1.3rem; margin-right: 5px"
+            ></i>
+            <i
+              (click)="addAdminRole(user.id)"
+              *ngIf="user.roles[0] != 'ROLE_ADMIN'"
+              class="pi pi-chevron-circle-up"
+              style="
+                font-size: 1.3rem;
+                margin-right: 5px;
+                color: rgb(132, 0, 255);
+              "
+            ></i>
+            <i
+              (click)="removeAdminRole(user.id)"
+              *ngIf="user.roles[0] == 'ROLE_ADMIN'"
+              class="pi pi-chevron-circle-down"
+              style="font-size: 1.3rem; margin-right: 5px; color: blue"
+            ></i>
+            <i
+              class="pi pi-trash"
+              style="font-size: 1.3rem; margin-right: 5px; color: red"
+            ></i>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4">No users found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

@@ -138,13 +138,13 @@
               style="color: red"
               *ngIf="registerForm.get('email')?.errors?.['required']"
             >
-              El email es obligatorio
+              Email is required
             </div>
             <div
               style="color: red"
               *ngIf="registerForm.get('email')?.errors?.['email']"
             >
-              El formato no es correcto
+              Invalid format
             </div>
           </div>
         </div>
@@ -168,13 +168,13 @@
               *ngIf="registerForm.get('password')?.errors?.['required']"
               style="color: red"
             >
-              La contraseña es obligatoria
+              Password is required
             </div>
             <div
               *ngIf="registerForm.get('password')?.errors?.['minlength']"
               style="color: red"
             >
-              La contraseña debe tener al menos 8 caracteres
+              8 characters min. length
             </div>
           </div>
         </div>
@@ -198,13 +198,13 @@
               style="color: red"
               *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
             >
-              La confirmación de contraseña es obligatoria
+              Confirm Password is required
             </div>
             <div
               style="color: red"
               *ngIf="registerForm.get('confirmPassword')?.errors?.['passwordMismatch']"
             >
-              Las contraseñas no coinciden
+              Passwords not equal
             </div>
           </div>
         </div>
@@ -227,7 +227,7 @@
               style="color: red"
               *ngIf="registerForm.get('birthdate')?.errors?.['required']"
             >
-              La fecha de nacimiento es obligatoria
+              Bithdate is required
             </div>
           </div>
         </div>

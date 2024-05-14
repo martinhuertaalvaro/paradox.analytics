@@ -28,6 +28,7 @@ export class EverybodyComponent {
   public router: Router = inject(Router);
   public toastSvc = inject(ToastService);
   private friends: any;
+  public areFriends: boolean = false;
   @ViewChild('dt1') dt1: any;
 
   async ngOnInit(): Promise<any> {
@@ -57,11 +58,11 @@ export class EverybodyComponent {
       email: this.user.email,
     };
     this.friends = await lastValueFrom(this.everybodySvc.getAllFriends(req));
-    console.log(this.friends);
+    this.checkFriends(user.id);
     this.visible = true;
   }
 
-  public async areFriends(id: any) {
+  public async checkFriends(id: any) {
     let bool: boolean = false;
 
     if (this.friends != null) {
@@ -72,7 +73,7 @@ export class EverybodyComponent {
       }
     }
 
-    return bool;
+    this.areFriends = bool;
   }
 
   async makeFriend(id: any) {

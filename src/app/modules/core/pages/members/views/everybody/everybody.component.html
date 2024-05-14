@@ -19,7 +19,9 @@
       ]"
       [(selection)]="selectedUsers"
       dataKey="id"
-      [tableStyle]="{ 'min-width': '50rem' }"
+      [tableStyle]="{
+        'min-width': '50rem'
+      }"
       [rows]="13"
       [scrollable]="true"
       scrollHeight="700px"
@@ -86,7 +88,11 @@
           </td>
           <td>
             <span class="p-column-title">Info</span>
-            <i class="pi pi-info-circle" (click)="showDialog(user)"></i>
+            <i
+              class="pi pi-info-circle"
+              style="font-size: 1.3rem"
+              (click)="showDialog(user)"
+            ></i>
           </td>
         </tr>
       </ng-template>
@@ -138,20 +144,20 @@
     <strong>City: </strong>{{ userForModal.city }}
   </p>
   <p class="p-text-secondary block mb-2">
-    <strong>Friends: </strong>{{ areFriends(userForModal.id) }}
+    <strong>Friends: </strong>{{ areFriends }}
   </p>
   <p style="display: flex; justify-content: right">
     <a
       ><i
         class="pi pi-heart"
         style="margin-right: 1%"
-        *ngIf="!areFriends(userForModal.id)"
+        *ngIf="!areFriends"
         (click)="makeFriend(userForModal.id); visible = false"
       ></i>
       <i
         class="pi pi-heart-fill"
         style="margin-right: 1%"
-        *ngIf="areFriends(userForModal.id)"
+        *ngIf="areFriends"
         (click)="deleteFriend(userForModal.id); visible = false"
       ></i
     ></a>
