@@ -7,25 +7,13 @@
 }
 
 .devicesContainer {
-  height: 70%;
+  height: 68%;
 }
 
 .stats {
   border-radius: var(--border-radius);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* offsetX, offsetY, blurRadius, color */
-  margin: 0.5%;
-  overflow: hidden;
-}
-
-.stats.big {
-  width: 49%;
-  display: flex;
-  align-items: center;
-  justify-items: center;
-}
-
-.stats.small {
-  width: 32.33%;
+  margin: 0.6%;
 }
 
 #canvas {

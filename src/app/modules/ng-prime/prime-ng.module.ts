@@ -18,6 +18,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { DialogModule } from 'primeng/dialog';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 /**
  * SharedModule should have anything but services and be imported in all modules that need the shared stuff (which could also be the AppModule).
@@ -46,6 +47,7 @@ const COMPONENTS = [
   DialogModule,
   AvatarModule,
   AvatarGroupModule,
+  ConfirmPopupModule,
 ];
 @NgModule({
   imports: [...COMPONENTS],

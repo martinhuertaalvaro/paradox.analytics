@@ -20,3 +20,7 @@ p-terminal {
   background-color: var(--background-main-color);
   height: 100%;
 }
+
+::ng-deep p-terminal input {
+  box-shadow: none !important;
+}

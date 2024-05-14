@@ -38,4 +38,11 @@ export class ManagementService extends BaseService {
       { params: params }
     );
   }
+
+  deleteUser(email: any): Observable<any> {
+    const params = this.buildQueryParams(email);
+    return this.http.delete<any>(`${this.baseUrlMaestros}/user/delete`, {
+      params: params,
+    });
+  }
 }

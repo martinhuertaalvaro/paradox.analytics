@@ -1,16 +1,7 @@
 <div class="mainContainer">
-  <div nz-row class="analyticsContainer">
-    <div nz-col nzSpan="24" class="stats">
-      <ngx-charts-pie-grid
-        [results]="data"
-        (select)="show_on_console_log($event)"
-        [designatedTotal]="100"
-      >
-      </ngx-charts-pie-grid>
-    </div>
-  </div>
-  <div nz-row class="devicesContainer">
-    <div class="stats big">
+  <div class="row analyticsContainer stats"></div>
+  <div class="row devicesContainer">
+    <div class="col-md-8 stats">
       <ngx-charts-area-chart
         [legend]="legend"
         [showXAxisLabel]="showXAxisLabel"
@@ -25,8 +16,8 @@
       >
       </ngx-charts-area-chart>
     </div>
-    <div class="stats big">
-      <p style="color: black">{{ raspberryInfo.valores.corriente }}</p>
+    <div class="col-md stats">
+      <p style="color: black"></p>
     </div>
   </div>
 </div>

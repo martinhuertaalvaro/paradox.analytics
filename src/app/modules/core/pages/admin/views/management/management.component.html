@@ -28,20 +28,26 @@
       scrollHeight="700px"
     >
       <ng-template pTemplate="caption">
-        <p-iconField iconPosition="left">
-          <p-inputIcon>
-            <i
-              class="pi pi-search"
-              style="display: flex; align-items: center"
-            ></i>
-          </p-inputIcon>
-          <input
-            pInputText
-            type="text"
-            (input)="filterGLobal($event)"
-            placeholder="Search..."
-          />
-        </p-iconField>
+        <p style="display: flex; align-items: center">
+          <p-iconField iconPosition="left">
+            <p-inputIcon>
+              <i
+                class="pi pi-search"
+                style="display: flex; align-items: center"
+              ></i>
+            </p-inputIcon>
+            <input
+              pInputText
+              type="text"
+              (input)="filterGLobal($event)"
+              placeholder="Search..."
+            />
+          </p-iconField>
+          <i
+            class="pi pi-question-circle"
+            style="font-size: 1.5rem; margin-left: 15px; justify-self: right"
+          ></i>
+        </p>
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
@@ -109,11 +115,12 @@
           <td>
             <span class="p-column-title">Info</span>
             <i
-              class="pi pi-info-circle"
+              (click)="showDialog(user)"
+              class="pi pi-eye"
               style="font-size: 1.3rem; margin-right: 5px"
             ></i>
             <i
-              (click)="addAdminRole(user.id)"
+              (click)="confirm($event, false, user.id, 'add')"
               *ngIf="user.roles[0] != 'ROLE_ADMIN'"
               class="pi pi-chevron-circle-up"
               style="
@@ -123,12 +130,13 @@
               "
             ></i>
             <i
-              (click)="removeAdminRole(user.id)"
+              (click)="confirm($event, false, user.id, 'delete')"
               *ngIf="user.roles[0] == 'ROLE_ADMIN'"
               class="pi pi-chevron-circle-down"
               style="font-size: 1.3rem; margin-right: 5px; color: blue"
             ></i>
             <i
+              (click)="confirm($event, true, user.id)"
               class="pi pi-trash"
               style="font-size: 1.3rem; margin-right: 5px; color: red"
             ></i>
@@ -144,3 +152,77 @@
     </p-table>
   </div>
 </div>
+<p-dialog
+  *ngIf="userForModal"
+  header="Header"
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '25rem' }"
+>
+  <ng-template pTemplate="header">
+    <div class="inline-flex align-items-center justify-content-center">
+      <p-avatar icon="pi pi-user" />
+      <span class="font-bold white-space-nowrap">
+        <strong>{{
+          "  " + userForModal.name + " " + userForModal.surname | uppercase
+        }}</strong>
+      </span>
+    </div>
+  </ng-template>
+  <p class="p-text-secondary block mb-2">
+    <strong>Username: </strong>{{ userForModal.email.split("@")[0] }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Email: </strong>{{ userForModal.email }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Workfield: </strong>{{ userForModal.workfield }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Role: </strong>{{ userForModal.roles[0].split("_")[1] }}
+  </p>
+
+  <p class="p-text-secondary block mb-2">
+    <strong>Register Date: </strong>{{ userForModal.registerdate }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Birthdate: </strong>{{ userForModal.birthdate }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>City: </strong>{{ userForModal.city }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Teams: </strong>{{ userForModal.teams.length }}
+  </p>
+  <p class="p-text-secondary block mb-2">
+    <strong>Devices: </strong>{{ userForModal.devices.length }}
+  </p>
+  <p
+    class="p-text-secondary block mb-2"
+    style="display: flex; align-items: center"
+  >
+    <strong>Active: </strong>
+    <i
+      class="pi pi-circle-fill"
+      [ngStyle]="{ color: user.active ? 'rgb(34, 241, 34)' : 'red' }"
+      style="font-size: 1.3rem; margin-left: 5px"
+    >
+    </i>
+  </p>
+</p-dialog>
+<p-confirmPopup #confirmPopupRef>
+  <ng-template pTemplate="headless" let-message let-test>
+    <div class="border-round p-3">
+      <span>{{ message.message }}</span>
+      <div class="flex align-items-center gap-2 mt-3">
+        <p-button (click)="accept()" label="Save" size="small" />
+        <p-button
+          (click)="reject()"
+          label="Cancel"
+          [outlined]="true"
+          size="small"
+        />
+      </div>
+    </div>
+  </ng-template>
+</p-confirmPopup>

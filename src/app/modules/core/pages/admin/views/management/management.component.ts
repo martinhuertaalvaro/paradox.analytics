@@ -6,6 +6,9 @@ import { ToastService } from '../../../../../shared/services/toast/toast.service
 import { lastValueFrom } from 'rxjs';
 import { ManagementService } from '../../services/management.service';
 import { User } from '../../../user/interfaces/user';
+import { ConfirmationService } from 'primeng/api';
+import { ConfirmPopup } from 'primeng/confirmpopup';
+import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-management',
@@ -15,6 +18,7 @@ import { User } from '../../../user/interfaces/user';
   styleUrl: './management.component.scss',
 })
 export class ManagementComponent {
+  constructor(private confirmationService: ConfirmationService) {}
   public managementSvc = inject(ManagementService);
   private authSvc = inject(AuthService);
   public users: User[] = [];
@@ -27,6 +31,7 @@ export class ManagementComponent {
   private friends: any;
   public areFriends: boolean = false;
   @ViewChild('dt1') dt1: any;
+  @ViewChild(ConfirmPopup) confirmPopup!: ConfirmPopup;
 
   async ngOnInit(): Promise<any> {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -67,6 +72,7 @@ export class ManagementComponent {
       let res = await lastValueFrom(this.managementSvc.addAdmin(req));
       console.log(res);
       user.roles = ['ROLE_ADMIN'];
+      this.toastSvc.create('success', 'PARADOX', res.status);
     }
   }
 
@@ -77,6 +83,54 @@ export class ManagementComponent {
       let res = await lastValueFrom(this.managementSvc.deleteAdmin(req));
       console.log(res);
       user.roles = ['ROLE_USER'];
+      this.toastSvc.create('success', 'PARADOX', res.status);
     }
+  }
+
+  public async deleteUser(id: any) {
+    let user = this.users.find((u) => u.id == id);
+    if (user) {
+      let req = { email: user.email };
+      let res = await lastValueFrom(this.managementSvc.deleteUser(req));
+      console.log(res);
+      this.users = this.users.filter((u) => u.email !== user?.email);
+      this.toastSvc.create('success', 'PARADOX', res.status);
+    }
+  }
+
+  public showDialog(user: any) {
+    this.userForModal = user;
+    this.visible = true;
+  }
+
+  //confirm popup
+  accept() {
+    this.confirmPopup.accept();
+  }
+
+  reject() {
+    this.confirmPopup.reject();
+  }
+
+  confirm(event: Event, bool: boolean, id?: any, mode?: string) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Are you sure you want to proceed?',
+      accept: () => {
+        if (bool == true) {
+          this.deleteUser(id);
+        } else {
+          if (mode == 'add') this.addAdminRole(id);
+          if (mode == 'delete') this.removeAdminRole(id);
+        }
+      },
+      reject: () => {
+        this.toastSvc.create('warn', 'Interrupted', 'Operation cancelled');
+      },
+    });
+  }
+
+  public consoleLog(): void {
+    console.log('id');
   }
 }
