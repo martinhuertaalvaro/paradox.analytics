@@ -96,7 +96,7 @@
     >
       <p-terminal
         welcomeMessage="Welcome to PARADOX"
-        prompt="{{ user.email?.split('@')?.[0] }} $"
+        prompt="{{ createPrompt() }} $"
       />
     </div>
     <div

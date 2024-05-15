@@ -1,4 +1,5 @@
 export interface User {
+  [key: string]: any;
   id?: number;
   email?: string;
   devices?: Array<string>;
